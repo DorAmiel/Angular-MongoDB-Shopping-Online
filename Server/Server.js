@@ -35,6 +35,8 @@ app.get('/', (req, res) => {
 
 // listen for requests
 require('./Routes/User.routes')(app);
+require('./Routes/Category.routes')(app);
+
 app.listen(dbConfig.port, () => {
     console.log(`Server is listening on port ${dbConfig.port}`);
 });

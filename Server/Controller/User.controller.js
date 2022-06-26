@@ -1,56 +1,38 @@
+const { validateBody } = require('../common/user-validation');
 const User = require('../Model/User.model');
 
-exports.create = (req, res) => {
-
-    if (!req.body.firstName) {
-        return res.status(400).send({
-            message: "First name can not be empty"
+exports.create = async(req, res) => {
+    try {
+        // Validate Request 
+        await validateBody(req.body);
+        //create a user
+        const user = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            username: req.body.username,
+            idNumber: req.body.idNumber,
+            password: req.body.password,
+            city: req.body.city,
+            street: req.body.street,
+            role: req.body.role || 'user',
         });
-    }
-    if (!req.body.lastName) {
-        return res.status(400).send({
-            message: "Last name can not be empty"
-        });
-    }
-    if (!req.body.username) {
-        return res.status(400).send({
-            message: "username can not be empty"
-        });
-    }
-    if (!req.body.password) {
-        return res.status(400).send({
-            message: "password can not be empty"
-        });
-    }
-    if (!req.body.email) {
-        return res.status(400).send({
-            message: "email can not be empty"
-        });
-    }
-
-
-
-
-    const user = new User({
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        username: req.body.username,
-        idNumber: req.body.idNumber,
-        password: req.body.password,
-        city: req.body.city,
-        street: req.body.street,
-        role: req.body.role || 'user',
-    });
-
-    // Save pet in the database
-    user.save()
-        .then(data => {
-            res.send(data);
-        }).catch(err => {
-            res.status(500).send({
-                message: err.message || "Some error occurred while creating the user."
+        //save user in the database
+        user.save()
+            .then(data => {
+                res.send(data);
+            }).catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred while creating the user."
+                });
             });
+    } catch (error) {
+        return res.status(400).send({
+            message: error.message || "Some error occurred while creating the User."
         });
+    }
+
+
+
 };
 
 exports.findAll = (req, res) => {
