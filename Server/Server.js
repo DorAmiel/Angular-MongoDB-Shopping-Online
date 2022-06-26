@@ -37,6 +37,9 @@ app.get('/', (req, res) => {
 require('./Routes/User.routes')(app);
 require('./Routes/Category.routes')(app);
 require('./Routes/Product.routes')(app);
+require('./Routes/Cart.routes')(app);
+require('./Routes/CartProduct.routes')(app);
+require('./Routes/Order.routes')(app);
 
 app.listen(dbConfig.port, () => {
     console.log(`Server is listening on port ${dbConfig.port}`);
