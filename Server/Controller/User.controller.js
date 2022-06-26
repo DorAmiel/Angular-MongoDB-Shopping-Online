@@ -67,18 +67,17 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    // Validate Request
-    if (!req.body.Name) {
-        return res.status(400).send({
-            message: "user Name can not be empty"
-        });
-    }
 
-    User.findByIdAndUpdate(req.params.userId, {
-            Name: req.body.Name,
-            Animal: req.body.Animal,
-            Age: req.body.Age
-        }, { new: true })
+    User.findByIdAndUpdate(
+            req.params.userId, {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                username: req.body.username,
+                idNumber: req.body.idNumber,
+                password: req.body.password,
+                city: req.body.city,
+                street: req.body.street
+            }, { new: true })
         .then(user => {
             if (!user) {
                 return res.status(404).send({

@@ -3,6 +3,7 @@ const Category = require('../Model/Category.model');
 
 exports.create = async(req, res) => {
     try {
+
         // Validate Request 
         await validateBody(req.body);
         //create a category
@@ -60,18 +61,12 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-    // Validate Request
-    if (!req.body.Name) {
-        return res.status(400).send({
-            message: "category Name can not be empty"
-        });
-    }
 
-    Category.findByIdAndUpdate(req.params.categoryId, {
-            Name: req.body.Name,
-            Animal: req.body.Animal,
-            Age: req.body.Age
-        }, { new: true })
+
+    Category.findByIdAndUpdate(
+            req.params.categoryId, {
+                categoryName: req.body.categoryName
+            }, {}, { new: true })
         .then(category => {
             if (!category) {
                 return res.status(404).send({
