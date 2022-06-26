@@ -1,9 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const dbConfig = require('./database.config');
+const dbConfig = require('./common/database.config');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const databaseConfig = require('./database.config');
 
 mongoose.Promise = global.Promise;
 
@@ -35,7 +34,7 @@ app.get('/', (req, res) => {
 });
 
 // listen for requests
-// require('./Routes/Pet.routes')(app);
-app.listen(databaseConfig.port, () => {
-    console.log(`Server is listening on port ${databaseConfig.port}`);
+require('./Routes/User.routes')(app);
+app.listen(dbConfig.port, () => {
+    console.log(`Server is listening on port ${dbConfig.port}`);
 });
