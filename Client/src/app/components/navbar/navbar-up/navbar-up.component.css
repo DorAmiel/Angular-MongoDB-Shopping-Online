@@ -1,8 +1,14 @@
 .navbar-up-container {
+    width: 20%;
     height: 100%;
+    overflow: hidden;
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 1;
 }
 
-.logo {
-    width: 30%;
-    height: 10%;
+.logo{
+    width:40%;
+    margin-left: 5%;
 }
