@@ -1,14 +1,15 @@
-.navbar-up-container {
+
+
+.logo-container {
     width: 20%;
     height: 100%;
-    overflow: hidden;
-    position: relative;
-    left: 0;
-    top: 0;
-    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: chocolate;
 }
 
-.logo{
-    width:40%;
-    margin-left: 5%;
+.logo {
+    height: 100%;
+    width: 50%;
 }
