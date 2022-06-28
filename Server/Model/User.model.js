@@ -9,7 +9,7 @@ const UserSchema = mongoose.Schema({
     city: String,
     street: String,
     role: String,
-    cartId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' }
+    cartId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' },
 }, {
     timestamps: true
 });

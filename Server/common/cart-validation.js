@@ -2,6 +2,7 @@ const Joi = require('joi');
 
 const schema = Joi.object({
     UserId: Joi.string().required(),
+    totalPrice: Joi.number().default(0)
 });
 
 

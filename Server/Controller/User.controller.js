@@ -4,6 +4,7 @@ const Cart = require('../Model/cart.model');
 const bcrypt = require('bcrypt');
 
 const OBJECT_ID_DEAFAULT = "12345678975654564654655";
+const DEFAULT_TOTAL_PRICE = 0;
 
 exports.create = async (req, res) => {
     try {
@@ -31,7 +32,8 @@ exports.create = async (req, res) => {
                 // create a cart
                 const cart = new Cart({
                     userId: data._id,
-                    cartCreated: new Date()
+                    cartProducts: [],
+                    totalPrice: DEFAULT_TOTAL_PRICE
                 });
                 //save cart in the database
                 cart.save()
@@ -45,7 +47,7 @@ exports.create = async (req, res) => {
                             res.send(user);
                         }).catch(err => {
                             res.status(500).send({
-                                message: err.message || "Some error occurred while updating the user car id."
+                                message: err.message || "Some error occurred while updating the user cart id."
                             });
                         });
                     }).catch(err => {
@@ -54,7 +56,6 @@ exports.create = async (req, res) => {
                         });
                     }
                     );
-                // res.send(data);
             }).catch(err => {
                 res.status(500).send({
                     message: err.message || "Some error occurred while creating the user."

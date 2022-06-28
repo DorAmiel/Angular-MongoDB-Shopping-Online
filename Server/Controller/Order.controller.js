@@ -1,9 +1,9 @@
 const { validateBody } = require('../common/order-validation');
 const Order = require('../Model/Order.model');
 
+
 exports.create = async(req, res) => {
     try {
-
         // Validate Request 
         await validateBody(req.body);
         //create a order
@@ -37,7 +37,7 @@ exports.create = async(req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    Order.find().then(orders => {
+    Order.find().populate('userId').populate('cartId').then(orders => {
         res.send(orders);
     }).catch(err => {
         res.status(500).send({

@@ -27,6 +27,7 @@ exports.create = async (req, res) => {
                 //update cart products in the cart
                 Cart.findByIdAndUpdate(req.body.cartId).then(cart => {
                     cart.cartProducts.push(data._id);
+                    cart.totalPrice += product.price;
                     cart.save();
                     res.send(data);
                 }).catch(err => {
@@ -44,9 +45,6 @@ exports.create = async (req, res) => {
             message: error.message || "Some error occurred while creating the cartProduct."
         });
     }
-
-
-
 };
 
 exports.findAll = (req, res) => {

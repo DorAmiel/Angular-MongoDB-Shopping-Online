@@ -1,4 +1,6 @@
+const { ref } = require('joi');
 const Joi = require('joi');
+const { now } = require('mongoose');
 
 const schema = Joi.object({
     userId: Joi.string().required(),
@@ -6,7 +8,7 @@ const schema = Joi.object({
     totalPrice: Joi.number().required(),
     city: Joi.string().required(),
     street: Joi.string().required(),
-    shippingDate: Joi.date().required(),
+    shippingDate: Joi.date().required().greater(Joi.ref('orderCreated')),
     orderCreated: Joi.date().required(),
     creditCard: Joi.number().required()
 });
