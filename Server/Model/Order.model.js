@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const OrderSchema = mongoose.Schema({
-    userId: String,
-    cartId: String,
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    cartId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' },
     totalPrice: Number,
     city: String,
     street: String,
