@@ -1,13 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const dbConfig = require('./database.config');
+const dbConfig = require('./common/database.config');
 const mongoose = require('mongoose');
-const cors = require('cors')
+const cors = require('cors');
 
 mongoose.Promise = global.Promise;
 
 // Connecting to the database
-mongoose.connect(dbConfig.url, {
+mongoose.connect(`${dbConfig.url}/Shopping-Online`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
@@ -30,11 +30,17 @@ app.use(bodyParser.json())
 
 // define a simple route
 app.get('/', (req, res) => {
-    res.json({ "message": "Welcome to EasyNotes application. Take notes quickly. Organize and keep track of all your notes." });
+    res.json({ "message": "Welcome to Shopping Online application." });
 });
 
 // listen for requests
-require('./Routes/Pet.routes')(app);
-app.listen(3005, () => {
-    console.log("Server is listening on port 3005");
+require('./Routes/User.routes')(app);
+require('./Routes/Category.routes')(app);
+require('./Routes/Product.routes')(app);
+require('./Routes/Cart.routes')(app);
+require('./Routes/CartProduct.routes')(app);
+require('./Routes/Order.routes')(app);
+
+app.listen(dbConfig.port, () => {
+    console.log(`Server is listening on port ${dbConfig.port}`);
 });
