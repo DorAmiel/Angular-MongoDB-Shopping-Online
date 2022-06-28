@@ -8,7 +8,8 @@ const UserSchema = mongoose.Schema({
     password: String,
     city: String,
     street: String,
-    role: String
+    role: String,
+    cartId: { type: mongoose.Schema.Types.ObjectId, ref: 'Cart' }
 }, {
     timestamps: true
 });

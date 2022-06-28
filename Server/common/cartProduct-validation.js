@@ -2,8 +2,8 @@ const Joi = require('joi');
 
 const schema = Joi.object({
     productId: Joi.string().required(),
-    amount: Joi.number().required(),
-    totalPrice: Joi.number().required(),
+    amount: Joi.number().default(1),
+    totalPrice: Joi.number().default(0),
     cartId: Joi.string().required()
 });
 

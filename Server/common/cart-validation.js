@@ -2,7 +2,6 @@ const Joi = require('joi');
 
 const schema = Joi.object({
     UserId: Joi.string().required(),
-    CartCreated: Joi.date().required()
 });
 
 

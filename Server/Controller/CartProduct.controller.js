@@ -1,22 +1,39 @@
 const { validateBody } = require('../common/cartProduct-validation');
 const CartProduct = require('../Model/cartProduct.model');
+const Cart = require('../Model/cart.model');
+const Product = require('../Model/Product.model');
 
-exports.create = async(req, res) => {
+
+const DEFAULT_AMOUNT = 1;
+
+exports.create = async (req, res) => {
     try {
-
         // Validate Request 
         await validateBody(req.body);
+
+        //get product by id
+        const product = await Product.findById(req.body.productId);
+
         //create a cartProduct
         const cartProduct = new CartProduct({
             productId: req.body.productId,
-            amount: req.body.amount,
-            totalPrice: req.body.totalPrice,
+            amount: DEFAULT_AMOUNT,
+            totalPrice: product.price,
             cartId: req.body.cartId
         });
         //save cartProduct in the database
         cartProduct.save()
             .then(data => {
-                res.send(data);
+                //update cart products in the cart
+                Cart.findByIdAndUpdate(req.body.cartId).then(cart => {
+                    cart.cartProducts.push(data._id);
+                    cart.save();
+                    res.send(data);
+                }).catch(err => {
+                    res.status(500).send({
+                        message: err.message || "Some error occurred while updating the cart products."
+                    });
+                });
             }).catch(err => {
                 res.status(500).send({
                     message: err.message || "Some error occurred while creating the cartProduct."
@@ -67,9 +84,9 @@ exports.update = (req, res) => {
 
 
     CartProduct.findByIdAndUpdate(
-            req.params.cartProductId, {
-                cartProductName: req.body.cartProductName
-            }, {}, { new: true })
+        req.params.cartProductId, {
+        cartProductName: req.body.cartProductName
+    }, {}, { new: true })
         .then(cartProduct => {
             if (!cartProduct) {
                 return res.status(404).send({

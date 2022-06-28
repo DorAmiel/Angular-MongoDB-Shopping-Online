@@ -8,11 +8,12 @@ const schema = Joi.object({
     password: Joi.string().required(),
     city: Joi.string().required(),
     street: Joi.string().required(),
-    role: Joi.string().valid('user', 'admin').default('user')
+    role: Joi.string().valid('user', 'admin').default('user'),
+    cartId: Joi.object()
 });
 
 
-exports.validateBody = async(body) => {
+exports.validateBody = async (body) => {
     const { error } = schema.validate(body)
     if (error) {
         throw error

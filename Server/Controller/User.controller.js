@@ -1,25 +1,60 @@
 const { validateBody } = require('../common/user-validation');
 const User = require('../Model/User.model');
+const Cart = require('../Model/cart.model');
+const bcrypt = require('bcrypt');
 
-exports.create = async(req, res) => {
+const OBJECT_ID_DEAFAULT = "12345678975654564654655";
+
+exports.create = async (req, res) => {
     try {
         // Validate Request 
         await validateBody(req.body);
         //create a user
+
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
+
         const user = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             username: req.body.username,
             idNumber: req.body.idNumber,
-            password: req.body.password,
+            password: hash,
             city: req.body.city,
             street: req.body.street,
             role: req.body.role || 'user',
+            cartId: OBJECT_ID_DEAFAULT
         });
         //save user in the database
         user.save()
             .then(data => {
-                res.send(data);
+                // create a cart
+                const cart = new Cart({
+                    userId: data._id,
+                    cartCreated: new Date()
+                });
+                //save cart in the database
+                cart.save()
+                    .then(cart => {
+                        //update user cartId
+                        User.findByIdAndUpdate(data._id, {
+                            cartId: cart._id
+                        }, {
+                            new: true
+                        }).then(user => {
+                            res.send(user);
+                        }).catch(err => {
+                            res.status(500).send({
+                                message: err.message || "Some error occurred while updating the user car id."
+                            });
+                        });
+                    }).catch(err => {
+                        res.status(500).send({
+                            message: err.message || "Some error occurred while creating the cart."
+                        });
+                    }
+                    );
+                // res.send(data);
             }).catch(err => {
                 res.status(500).send({
                     message: err.message || "Some error occurred while creating the user."
@@ -30,13 +65,10 @@ exports.create = async(req, res) => {
             message: error.message || "Some error occurred while creating the User."
         });
     }
-
-
-
 };
 
 exports.findAll = (req, res) => {
-    User.find().then(users => {
+    User.find().populate('cartId').then(users => {
         res.send(users);
     }).catch(err => {
         res.status(500).send({
@@ -69,15 +101,15 @@ exports.findOne = (req, res) => {
 exports.update = (req, res) => {
 
     User.findByIdAndUpdate(
-            req.params.userId, {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                username: req.body.username,
-                idNumber: req.body.idNumber,
-                password: req.body.password,
-                city: req.body.city,
-                street: req.body.street
-            }, { new: true })
+        req.params.userId, {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        username: req.body.username,
+        idNumber: req.body.idNumber,
+        password: req.body.password,
+        city: req.body.city,
+        street: req.body.street
+    }, { new: true })
         .then(user => {
             if (!user) {
                 return res.status(404).send({

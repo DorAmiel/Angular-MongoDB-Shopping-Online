@@ -1,7 +1,7 @@
 const { validateBody } = require('../common/cart-validation');
 const Cart = require('../Model/cart.model');
 
-exports.create = async(req, res) => {
+exports.create = async (req, res) => {
     try {
 
         // Validate Request 
@@ -9,7 +9,6 @@ exports.create = async(req, res) => {
         //create a cart
         const cart = new Cart({
             userId: req.body.userId,
-            cartCreated: req.body.cartCreated
         });
         //save cart in the database
         cart.save()
@@ -26,12 +25,10 @@ exports.create = async(req, res) => {
         });
     }
 
-
-
 };
 
 exports.findAll = (req, res) => {
-    Cart.find().then(carts => {
+    Cart.find().populate('userId').then(carts => {
         res.send(carts);
     }).catch(err => {
         res.status(500).send({
@@ -41,7 +38,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    Cart.findById(req.params.cartId)
+    Cart.findById(req.params.cartId).populate('userId')
         .then(cart => {
             if (!cart) {
                 return res.status(404).send({
@@ -65,9 +62,9 @@ exports.update = (req, res) => {
 
 
     Cart.findByIdAndUpdate(
-            req.params.cartId, {
-                cartName: req.body.cartName
-            }, {}, { new: true })
+        req.params.cartId, {
+        cartName: req.body.cartName
+    }, {}, { new: true })
         .then(cart => {
             if (!cart) {
                 return res.status(404).send({
