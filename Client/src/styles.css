@@ -14,15 +14,12 @@ body {
 }
 
 app-navbar {
-    /* background-color: antiquewhite; */
     height: 25vh;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    position: fixed;
 }
-
 
 app-navbar-up {
     width: 100%;
@@ -40,4 +37,10 @@ app-navbar-down {
     display: flex;
     align-items: center;
     border-radius: 10px;
+}
+
+app-main-body {
+    height: 75vh;
+    width: 80%;
+    background-color: black;
 }

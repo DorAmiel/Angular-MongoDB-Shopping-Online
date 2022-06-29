@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarDownComponent } from './components/navbar/navbar-down/navbar-down.component';
 import { NavbarUpComponent } from './components/navbar/navbar-up/navbar-up.component';
-import { MainBodyComponent } from './components/main-body/main-body.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { BodyComponent } from './components/body/body.component';
 
 @NgModule({
   declarations: [
@@ -15,8 +15,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     NavbarComponent,
     NavbarDownComponent,
     NavbarUpComponent,
-    MainBodyComponent,
     SidebarComponent,
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
