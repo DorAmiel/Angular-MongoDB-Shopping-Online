@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { NavbarDownComponent } from './components/navbar/navbar-down/navbar-down.component';
 import { NavbarUpComponent } from './components/navbar/navbar-up/navbar-up.component';
+import { MainBodyComponent } from './components/main-body/main-body.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import { NavbarUpComponent } from './components/navbar/navbar-up/navbar-up.compo
     NavbarComponent,
     NavbarDownComponent,
     NavbarUpComponent,
+    MainBodyComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
