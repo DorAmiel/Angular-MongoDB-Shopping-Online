@@ -8,6 +8,7 @@ import { NavbarDownComponent } from './components/navbar/navbar-down/navbar-down
 import { NavbarUpComponent } from './components/navbar/navbar-up/navbar-up.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BodyComponent } from './components/body/body.component';
+import { SlideshowComponent } from './components/slideshow/slideshow.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { BodyComponent } from './components/body/body.component';
     NavbarUpComponent,
     SidebarComponent,
     BodyComponent,
+    SlideshowComponent,
   ],
   imports: [
     BrowserModule,

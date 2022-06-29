@@ -1,0 +1,9 @@
+.slide-container {
+    background-color: aqua;
+    height: 30vh;
+}
+
+.carousel-image {
+    height: 35vh;
+    width: 100vw;
+}

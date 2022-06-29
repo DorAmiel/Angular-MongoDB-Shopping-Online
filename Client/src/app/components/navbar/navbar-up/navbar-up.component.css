@@ -7,9 +7,15 @@
     /* background-color: chocolate; */
 }
 
+
+/* 
 .logo {
     height: 100%;
     width: 50%;
+} */
+
+.supermarket-title {
+    color: #515151;
 }
 
 .search-container {
@@ -35,13 +41,14 @@
     margin-left: 5%;
     cursor: pointer;
 }
+
 .login-buttons:hover {
     height: 100%;
     width: 30%;
     transition-duration: 0.3s;
 }
 
-.search-icon{
+.search-icon {
     position: absolute;
     z-index: 1;
     width: 15%;
