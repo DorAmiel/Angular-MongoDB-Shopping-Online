@@ -13,8 +13,8 @@ body {
 }
 
 app-navbar {
-    background-color: antiquewhite;
-    height: 40vh;
+    /* background-color: antiquewhite; */
+    height: 25vh;
     width: 100%;
     display: flex;
     flex-direction: column;
