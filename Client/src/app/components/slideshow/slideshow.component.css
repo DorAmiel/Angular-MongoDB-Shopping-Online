@@ -1,0 +1,13 @@
+.slide-container {
+    background-color: aqua;
+    height: 30vh;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.item {
+    height: 35vh;
+    width: 100vw;
+}
