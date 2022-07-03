@@ -9,6 +9,7 @@ import { NavbarUpComponent } from './components/navbar/navbar-up/navbar-up.compo
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BodyComponent } from './components/body/body.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SlideshowComponent } from './components/slideshow/slideshow.component';
     SidebarComponent,
     BodyComponent,
     SlideshowComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
