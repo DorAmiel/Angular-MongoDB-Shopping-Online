@@ -1,0 +1,67 @@
+.logo-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: chocolate; */
+}
+
+.supermarket-title {
+    color: #515151;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 4.5rem;
+    font-style: oblique;
+}
+
+.super-title {
+    text-decoration: underline;
+    color: #a660e0;
+}
+
+.market-title {
+    color: #b6b6fb;
+}
+
+.cart-title {
+    width: 10%;
+}
+
+.search-container {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-buttons {
+    width: 25%;
+    height: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.login-buttons:hover {
+    height: 100%;
+    width: 30%;
+    transition-duration: 0.3s;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 1;
+    width: 15%;
+    height: 60%;
+    left: 80%;
+    top: 20%;
+}
