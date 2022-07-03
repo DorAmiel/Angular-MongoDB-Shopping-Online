@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"; 
+@import "~bootstrap/dist/css/bootstrap.css";
 
 * {
     margin: 0;
@@ -15,61 +15,54 @@ body {
     background-color: #f3f5f8;
 }
 
+.main-container {
+    display: grid;
+    grid-template-columns: 80vw 20vw;
+    grid-template-rows: 20vh 70vh 10vh;
+    grid-template-areas:
+        "header header"
+        "main sidebar"
+        "footer footer";
+}
+
+.grid-item-1 {
+    background-color: rgb(255, 255, 255);
+    grid-area: header;
+}
+
+.grid-item-2 {
+    grid-area: main;
+    background-color: rgb(255, 255, 255);
+}
+
+.grid-item-3 {
+    background-color: rgb(255, 255, 255);
+    grid-area: sidebar;
+}
+
+.grid-item-4 {
+    grid-area: footer;
+    background-color: rgb(65, 0, 0);
+}
 
 app-navbar {
-    height: 25vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    position: fixed;
-    background-color: #f3f5f8;
-    top: 0;
-    z-index: 1;
+    display: grid;
+    grid-template-rows: 10vh 10vh;
+    grid-template-areas:
+        "navbar-up"
+        "navbar-down";
 }
 
 app-navbar-up {
-    width: 100%;
-    height: 50%;
+    grid-area: navbar-up;
+    background-color: #f3f5f8;
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
 }
 
 app-navbar-down {
-    width: 100%;
-    height: 50%;
+    grid-area: navbar-down;
     display: flex;
-    align-items: center;
-    border-radius: 10px;
-}
-
-.main-container {
-    width: 100vw;
-    display: flex;
+    background-color: #f3f5f8;
     flex-direction: row;
-    justify-content: flex-start;
-    background-color: #f3f5f8;
-}
-
-app-body {
-    margin-top: 28vh;
-    width: 80%;
-    min-height: 72vh;
-    background-color: #f3f5f8;
-    margin-left: 1%;
-    margin-right: 1.5%;
-    border-radius: 20px;
-}
-
-app-sidebar {
-    margin-top: 28vh;
-    width: 17.5%;
-    left: 82.5%;
-    height: 75vh;
-    background-color: #f3f5f8;
-    border-radius: 20px;
-    position: fixed;
-    overflow: auto;
 }
