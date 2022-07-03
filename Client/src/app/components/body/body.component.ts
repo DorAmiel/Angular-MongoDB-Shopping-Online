@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyComponent implements OnInit {
   constructor() { }
-
+array= [1,2,3];
   ngOnInit(): void {
   }
 

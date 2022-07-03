@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/dist/css/bootstrap.css"; 
 
+@import "~bootstrap/dist/css/bootstrap.css";
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +14,6 @@ body {
     scroll-behavior: smooth;
     background-color: #f3f5f8;
 }
-
 
 app-navbar {
     height: 25vh;
