@@ -1,5 +1,5 @@
 .signup-container {
-    height: 70vh;
+    height: 60vh;
     width: 30vw;
     position: absolute;
     top: 50%;
@@ -38,4 +38,8 @@ h1 {
 .signup-button {
     font-family: 'Roboto Mono', monospace;
     font-weight: bold;
+}
+
+.goBack-button {
+    width: 20%;
 }
