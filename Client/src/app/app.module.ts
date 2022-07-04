@@ -10,6 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BodyComponent } from './components/body/body.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     BodyComponent,
     SlideshowComponent,
     ProductCardComponent,
+    SignupComponent,
   ],
   imports: [
     BrowserModule,
