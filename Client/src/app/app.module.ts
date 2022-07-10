@@ -11,6 +11,7 @@ import { BodyComponent } from './components/body/body.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SignupComponent } from './components/signup/signup.component';
     SlideshowComponent,
     ProductCardComponent,
     SignupComponent,
+    HomePageComponent,
   ],
   imports: [
     BrowserModule,
