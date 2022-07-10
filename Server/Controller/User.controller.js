@@ -3,7 +3,7 @@ const User = require('../Model/User.model');
 const Cart = require('../Model/cart.model');
 const bcrypt = require('bcrypt');
 
-const OBJECT_ID_DEAFAULT = "12345678975654564654655";
+const OBJECT_ID_DEAFAULT = "11bacd11111a111a111df111";
 const DEFAULT_TOTAL_PRICE = 0;
 
 exports.create = async (req, res) => {
@@ -147,6 +147,27 @@ exports.delete = (req, res) => {
             }
             return res.status(500).send({
                 message: "Could not delete user with id " + req.params.userId
+            });
+        });
+}
+
+exports.findByUserName = (req, res) => {
+    User.findOne({ username: req.query.userName })
+        .then(user => {
+            if (!user) {
+                return res.status(404).send({
+                    message: "user not found with username " + req.query.userName
+                });
+            }
+            res.send(user);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "user not found with username " + req.query.userName
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving user with username " + req.query.userName
             });
         });
 }

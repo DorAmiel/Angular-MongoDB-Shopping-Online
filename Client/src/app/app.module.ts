@@ -13,7 +13,7 @@ import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { SigninComponent } from './components/signin/signin.component';
+import { SigninComponent } from './pages/signin/signin.component';
 
 @NgModule({
   declarations: [
