@@ -1,4 +1,4 @@
-import { SignupComponent } from './components/signup/signup.component';
+import { SignupComponent } from './pages/signup/signup.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';

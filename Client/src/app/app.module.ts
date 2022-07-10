@@ -10,7 +10,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BodyComponent } from './components/body/body.component';
 import { SlideshowComponent } from './components/slideshow/slideshow.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
-import { SignupComponent } from './components/signup/signup.component';
+import { SignupComponent } from './pages/signup/signup.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 
 @NgModule({
