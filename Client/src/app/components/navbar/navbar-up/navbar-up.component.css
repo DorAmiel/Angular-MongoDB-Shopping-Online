@@ -72,6 +72,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 121;
+}
+
+.loggedUserButtons {
+    margin-right: 5%;
+    color: #515151;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-style: oblique;
+    display: flex;
+    
+    justify-content: center;
+    align-items: flex-end;
+    cursor: pointer;
 }
 
 .logout-buttons {
@@ -86,14 +100,4 @@
     font-family: 'Quicksand', sans-serif;
     font-size: 2rem;
     font-style: oblique;
-}
-
-.dropdown-container {
-    /* display: none; */
-    position: absolute;
-    z-index: 1;
-    width: 20vw;
-    height: 10vh;
-    bottom: 10vh;
-    background-color: #a660e0;
 }
