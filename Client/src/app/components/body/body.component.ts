@@ -9,28 +9,44 @@ import { Product } from '../../models/product';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
+
+  products: Product[] = [];
+  currentCategoryId: string = '';
+
   constructor(
     private router: Router,
     private productService: ProductsService
   ) { }
 
-  array = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  products: Product[] = [];
-
 
   ngOnInit(): void {
-    this.getProducts();
+    if (this.currentCategoryId === '') {
+      this.getProducts();
+    }
+    else {
+      this.getProductsByCategory(this.currentCategoryId);
+    }
   }
 
-  //get all products
-  getProducts() {
-    this.productService.getProducts().subscribe(
-      (data: Product[]) => {
-        this.products = data;
-        console.log(this.products);
+    //get all products
+    getProducts() {
+      this.productService.getProducts().subscribe(
+        (data: Product[]) => {
+          this.products = data;
+          console.log(this.products);
+        }
+      )
+    }
 
-      }
-    )
+    //get products by category
+    getProductsByCategory(category: string) {
+      this.productService.getProductsByCategory(category).subscribe(
+        (data: Product[]) => {
+          this.products = data;
+          console.log(this.products);
+        }
+      )
+    }
+
+
   }
-
-}

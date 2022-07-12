@@ -7,7 +7,7 @@ import { Product } from '../models/product';
   providedIn: 'root'
 })
 export class ProductsService {
- 
+
   URL = "http://127.0.0.1:5000/products"
   constructor(private http: HttpClient) { }
 
@@ -30,6 +30,12 @@ export class ProductsService {
   /** create a  Product  */
   addProduct(product: Product): Observable<any> {
     console.log('service add')
-    return this.http.post<any>(`${this.URL}`, {"productName": product.productName, "categoryId": product.categoryId, "price": product.price, "image": product.image})
+    return this.http.post<any>(`${this.URL}`, { "productName": product.productName, "categoryId": product.categoryId, "price": product.price, "image": product.image })
   }
+
+  /** get products by category  */
+  getProductsByCategory(categoryName: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.URL}/?categoryName=${categoryName}`)
+  }
+
 }

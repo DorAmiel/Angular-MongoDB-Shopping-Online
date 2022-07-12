@@ -28,7 +28,7 @@
 }
 
 .search-container {
-    width: 60%;
+    width: 50%;
     height: 100%;
     display: flex;
     justify-content: center;
@@ -36,7 +36,7 @@
 }
 
 .login-container {
-    width: 20%;
+    width: 30%;
     height: 100%;
     display: flex;
     align-items: center;
@@ -44,7 +44,7 @@
 }
 
 .login-buttons {
-    width: 25%;
+    width: 20%;
     height: 90%;
     margin-top: 5%;
     margin-left: 5%;
@@ -53,7 +53,7 @@
 
 .login-buttons:hover {
     height: 100%;
-    width: 30%;
+    width: 23%;
     transition-duration: 0.3s;
 }
 
@@ -71,29 +71,34 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: space-between;
-    z-index: 121;
+    align-items: center;
+    flex-direction: row;    
+}
+
+.user-side{
+    width: 60%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .loggedUserButtonsContainer {
-    margin-right: 5%;
-    margin-top: 2%;
     color: #515151;
     font-family: 'Quicksand', sans-serif;
     font-size: 1.3rem;
     font-style: oblique;
-    padding: 7%;
     display: flex;
     justify-content: center;
-    align-items: space-around;
+    align-items: center;
     cursor: pointer;
+    height: 100%;
+    width: 40%;
 }
 
 .person-icon {
     width: 18%;
     height: 75%;
-    margin-left: 5%;
-    margin-top: 2%;
 }
 
 .helloUser {
@@ -101,7 +106,6 @@
     font-family: 'Quicksand', sans-serif;
     font-size: 2rem;
     font-style: oblique;
-    margin-top: 7%;
 }
 
 .loggedUserButtons {
