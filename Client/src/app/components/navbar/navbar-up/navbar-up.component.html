@@ -6,23 +6,20 @@
 <div class="search-container">
     <p class="control has-icons-left has-icons-right ">
         <i><img class="search-icon" src="../../../../assets/Icons/magnifying-glass.png"></i>
-        <input class="input is-rounded is-info is-hovered is-medium" type="text"
-            src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search...">
+        <input class="input is-rounded is-info is-hovered is-medium" type="text" src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search...">
     </p>
 </div>
 
 
 <div class="login-container">
     <div *ngIf="loggedUser.username" class="loggedUserContainer">
-        <img src="../../../../assets/Icons/profile.png" class="logout-buttons" alt="loading">
+        <img src="../../../../assets/Icons/profile.png" class="person-icon" alt="loading">
         <span class="helloUser">Hello {{loggedUser.firstName}}</span>
-        <div class="loggedUserButtons">
-            <span>Orders</span>
-            <span>Logout</span>
+        <div class="loggedUserButtonsContainer">
+            <span class="loggedUserButtons">Orders</span> &nbsp; &nbsp;
+            <span (click)="logout()" class="loggedUserButtons">Logout</span>
         </div>
     </div>
-    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/log-in.png" routerLink="/signin"
-        class="login-buttons" alt="loading">
-    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/signup.png" routerLink="/signup"
-        class="login-buttons" alt="loading">
+    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/log-in.png" routerLink="/signin" class="login-buttons" alt="loading">
+    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/signup.png" routerLink="/signup" class="login-buttons" alt="loading">
 </div>

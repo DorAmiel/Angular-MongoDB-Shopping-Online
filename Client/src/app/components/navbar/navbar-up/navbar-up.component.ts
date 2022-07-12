@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarUpComponent implements OnInit {
 
- 
+ //use router
+
    loggedUser =JSON.parse(localStorage.getItem('user') || '{}');
    
-  //  showDropDown(){
 
 
   
@@ -18,6 +18,13 @@ export class NavbarUpComponent implements OnInit {
   
   ngOnInit(): void {
     console.log(this.loggedUser.username);
+  }
+
+  //remove user from local storage
+  logout(){
+    localStorage.removeItem('user');
+    alert('You have been logged out');
+    this.loggedUser = !this.loggedUser;
   }
 
   

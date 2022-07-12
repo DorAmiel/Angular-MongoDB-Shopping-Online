@@ -1,7 +1,7 @@
 <div class="categories-container">
-    <div *ngFor="let i of arry" class="category-box">
+    <div *ngFor="let category of categories" class="category-box">
         <img class="category-img" src="../../../../assets/Icons/lemon.png" alt="">
-        <p class="category-title">vag&fruit</p>
+        <p class="category-title">{{category.categoryName}}</p>
     </div>
 </div>
 
