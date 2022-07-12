@@ -65,3 +65,35 @@
     left: 80%;
     top: 20%;
 }
+
+.loggedUserContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logout-buttons {
+    width: 18%;
+    height: 75%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.helloUser {
+    color: #515151;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 2rem;
+    font-style: oblique;
+}
+
+.dropdown-container {
+    /* display: none; */
+    position: absolute;
+    z-index: 1;
+    width: 20vw;
+    height: 10vh;
+    bottom: 10vh;
+    background-color: #a660e0;
+}

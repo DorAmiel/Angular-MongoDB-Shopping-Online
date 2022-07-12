@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarUpComponent implements OnInit {
 
-  constructor() { }
+ 
+   loggedUser =JSON.parse(localStorage.getItem('user') || '{}');
+   
+  //  showDropDown(){
 
+
+  
+  constructor() { }
+  
   ngOnInit(): void {
+    console.log(this.loggedUser.username);
   }
+
+  
+
+
+  
+  
 
 }
