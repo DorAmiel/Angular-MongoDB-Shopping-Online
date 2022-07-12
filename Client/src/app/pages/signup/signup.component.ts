@@ -24,23 +24,42 @@ export class SignupComponent {
     this.showLastStep = !this.showLastStep
   }
 
-  validateUserName(username: string): any {
+  async validateUserName(username: string): Promise<any> {
     try {
-      this.userService.getUserByUserName(username).subscribe(user => {
-        alert('User name already exists')
+      const user = await this.userService.getUserByUserName(username).toPromise()
+      console.log(user)
+      if (user) {
         return false
-      })
-    } catch (err) {
-      console.log(err + ' user name is valid');
-      console.log('username is valid');
+      }
+    }
+    catch (err) {
+      console.log("err")
+      return true
+    }
+  }
+
+  async validateIdNumber(idNumber: string): Promise<any> {
+    try {
+      const temp = await this.userService.getUserByIdNumber(idNumber).toPromise()
+      console.log(temp)
+      if (temp) {
+        return false
+      }
+    }
+    catch (err) {
+      console.log("err")
       return true
     }
   }
 
 
-  validateFormOne(form: any) {
+  async validateFormOne(form: any) {
     if (form.valid) {
-      if (!this.validateUserName(form.value.username)) {
+      const user = await this.validateUserName(form.value.username)
+      const id = await this.validateIdNumber(form.value.idNumber)
+      console.log("user is " + user)
+      if (!user || !id) {
+        alert("user name already exists or id number already exists")
         return
       }
       if (form.value.password === form.value.confirmPassword) {
@@ -48,7 +67,6 @@ export class SignupComponent {
         this.myUser.username = form.value.username
         this.myUser.idNumber = form.value.idNumber
         this.toggleSteps()
-        console.log(this.myUser)
       }
       else {
         alert('Passwords do not match')
@@ -56,11 +74,8 @@ export class SignupComponent {
     }
   }
 
-  validateFormTwo(form: any) {
+  async validateFormTwo(form: any) {
     if (form.valid) {
-      if (!this.validateUserName(form.value.username)) {
-        return
-      }
       this.myUser.firstName = form.value.firstName
       this.myUser.lastName = form.value.lastName
       this.myUser.city = form.value.city

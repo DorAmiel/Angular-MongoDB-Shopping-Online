@@ -171,3 +171,25 @@ exports.findByUserName = (req, res) => {
             });
         });
 }
+
+exports.findByIdNumber = (req, res) => {
+    User.findOne({ idNumber: req.query.idNumber })
+        .then(user => {
+            if (!user) {
+                return res.status(404).send({
+                    message: "user not found with idNumber " + req.query.idNumber
+                });
+            }
+            res.send(user);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "user not found with idNumber " + req.query.idNumber
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving user with idNumber " + req.query.idNumber
+            });
+        });
+}
+

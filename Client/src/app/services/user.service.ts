@@ -26,6 +26,10 @@ export class UserService {
     return result
   }
 
+  /** GET User by idNumber. Will 404 if id not found */
+  getUserByIdNumber(idNumber: string): Observable<User> {
+    return this.http.get<User>(`${this.URL}/?idNumber=${idNumber}`)
+  }
 
   /** GET User by id. Will 404 if id not found */
   delUser(id: string): Observable<User> {
