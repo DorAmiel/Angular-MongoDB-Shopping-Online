@@ -6,9 +6,13 @@ module.exports = (app) => {
 
     // Retrieve all users
     app.get('/users', (req, res) => {
-        if (req.query.userName) {
+        if (req.query.userName && req.query.password) {
+            users.findByUserNameAndPassword(req, res);
+        }
+        else if (req.query.userName) {
             users.findByUserName(req, res);
-        } else if (req.query.idNumber) {
+        }
+        else if (req.query.idNumber) {
             users.findByIdNumber(req, res);
         }
         else {

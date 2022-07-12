@@ -4,11 +4,15 @@
         <img class="signin-icon" src="../../../assets/Icons/man.png">
     </div>
     <hr>
-    <form class="input-container">
-        <input class="is-info signin-inupt is-large input" type="username" placeholder="Username" name="username"><br>
-        <input class="is-info signin-inupt is-large input" type="password" placeholder="Password" name="password"><br>
-        <button class="button is-link is-light is-large signin-inupt signin-button" type="submit">Sign In</button>
+    <form #signInForm="ngForm" class="input-container">
+        <input class="is-info signin-inupt is-large input" type="username" placeholder="Username" name="username"
+            ngModel><br>
+        <input class="is-info signin-inupt is-large input" type="password" placeholder="Password" name="password"
+            ngModel><br>
+        <button class="button is-link is-light is-large signin-inupt signin-button" type="submit"
+            (click)="signIn(signInForm)">Sign In</button>
         <br>
-        <button class="button is-link is-light is-large signin-inupt signin-button" type="submit">Forgot Password?</button>
+        <button class="button is-link is-light is-large signin-inupt signin-button" type="submit">Forgot
+            Password?</button>
     </form>
 </div>

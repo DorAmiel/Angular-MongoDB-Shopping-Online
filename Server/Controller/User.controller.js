@@ -193,3 +193,29 @@ exports.findByIdNumber = (req, res) => {
         });
 }
 
+exports.findByUserNameAndPassword = (req, res) => {
+    User.findOne({ username: req.query.userName })
+        .then(user => {
+            if (!user) {
+                return res.status(404).send({
+                    message: "user not found with username or password " + req.query.userName
+                });
+            }
+            console.log(user.password);
+            console.log(req.query.password);
+            user.password = bcrypt.compareSync(req.query.password, user.password);
+            console.log(user.password + " after compare");
+            if (user.password) {
+                res.send(user);
+            }
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "user not found with username " + req.query.userName
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving user with username " + req.query.userName
+            });
+        });
+}

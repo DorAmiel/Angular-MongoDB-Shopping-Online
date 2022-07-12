@@ -31,6 +31,11 @@ export class UserService {
     return this.http.get<User>(`${this.URL}/?idNumber=${idNumber}`)
   }
 
+  /** GET User by userName and Password. Will 404 if id not found */
+  getUserByUserNameAndPassword(username: string, password: string): Observable<User> {
+    return this.http.get<User>(`${this.URL}/?userName=${username}&password=${password}`)
+  }
+
   /** GET User by id. Will 404 if id not found */
   delUser(id: string): Observable<User> {
     return this.http.delete<User>(`${this.URL}/${id}`)
