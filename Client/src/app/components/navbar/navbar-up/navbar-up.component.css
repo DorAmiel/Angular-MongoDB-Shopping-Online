@@ -4,24 +4,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    /* background-color: chocolate; */
     cursor: pointer;
 }
 
 .supermarket-title {
     color: #515151;
     font-family: 'Quicksand', sans-serif;
-    font-size: 4.5rem;
     font-style: oblique;
+}
+
+.supermarket-title img {
+    max-width: 4vw;
+    max-height: 4vw;
 }
 
 .super-title {
     text-decoration: underline;
     color: #a660e0;
+    font-size: 2.5vw;
 }
 
 .market-title {
     color: #b6b6fb;
+    font-size: 2.5vw;
 }
 
 .cart-title {
@@ -73,10 +78,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;    
+    flex-direction: row;
 }
 
-.user-side{
+.user-side {
     width: 60%;
     height: 100%;
     display: flex;

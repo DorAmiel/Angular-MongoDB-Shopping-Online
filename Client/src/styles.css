@@ -2,11 +2,17 @@
 
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~bootstrap/dist/css/bootstrap.css";
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
 * {
     margin: 0;
     padding: 0;
-    color: black;
     z-index: 0;
+
 }
 
 body {
@@ -20,7 +26,7 @@ body {
     display: grid;
     grid-template-columns: 80vw 20vw;
     grid-template-rows: 20vh 80vh 10vh;
-    grid-template-areas: "header header" "main sidebar" "footer footer";
+    grid-template-areas: "header header""main sidebar""footer footer";
 }
 
 .grid-item-1 {
@@ -44,7 +50,7 @@ body {
 app-navbar {
     display: grid;
     grid-template-rows: 10vh 10vh;
-    grid-template-areas: "navbar-up" "navbar-down";
+    grid-template-areas: "navbar-up""navbar-down";
 }
 
 app-navbar-up {
