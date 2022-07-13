@@ -31,15 +31,6 @@ export class BodyComponent {
     }
   }
 
-  // ngOnInit(): void {
-  //   if (this.currentCategoryId === '') {
-  //     this.getProducts();
-  //   }
-  //   else {
-  //     this.getProductsByCategory(this.currentCategoryId);
-  //   }
-  // }
-
   //get all products
   getProducts() {
     this.productService.getProducts().subscribe(
