@@ -1,6 +1,6 @@
 <div class="sidebar-container card">
     <div class="basket-container">
-        <app-basket-product *ngFor="let product of currentCart.cartProducts"></app-basket-product>
+        <app-basket-product *ngFor="let product of currentCart.cartProducts" [cartProductId]="product"></app-basket-product>
     </div>
     <div class="order-button">
         <a>
