@@ -19,7 +19,7 @@ body {
 .main-container {
     display: grid;
     grid-template-columns: 80vw 20vw;
-    grid-template-rows: 20vh 90vh 10vh;
+    grid-template-rows: 20vh 80vh 10vh;
     grid-template-areas: "header header" "main sidebar" "footer footer";
 }
 
@@ -33,6 +33,7 @@ body {
 
 .grid-item-3 {
     grid-area: sidebar;
+    background-color: #f3f5f8;
 }
 
 .grid-item-4 {
