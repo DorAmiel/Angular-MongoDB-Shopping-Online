@@ -23,7 +23,6 @@ export class BodyComponent {
 
   ngOnChanges() {
     this.currentCategoryId = this.currentCategory._id;
-    console.log(this.currentCategoryId);
     if (this.currentCategoryId === '' || this.currentCategoryId === undefined) {
       this.getProducts();
     }

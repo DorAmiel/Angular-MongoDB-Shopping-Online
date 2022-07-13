@@ -19,7 +19,6 @@ export class HomePageComponent implements OnInit {
   reciveCategory($event: Category) {
     this.currentCategory = $event;
     this.categoryEmmiter.emit(this.currentCategory);
-    console.log(this.currentCategory);
   }
 
 }
