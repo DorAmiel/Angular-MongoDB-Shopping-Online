@@ -1,5 +1,5 @@
 <div class="categories-container">
-    <div *ngFor="let category of categories" class="category-box">
+    <div *ngFor="let category of categories" class="category-box" (click)="getCurrentCategory(category)">
         <img class="category-img" src="../../../../assets/Icons/lemon.png" alt="">
         <p class="category-title">{{category.categoryName}}</p>
     </div>

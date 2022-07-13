@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../../services/categories.service';
 import { Category } from '../../../models/category';
@@ -12,6 +12,8 @@ export class NavbarDownComponent implements OnInit {
 
   arry = [1, 2, 3, 4, 5, 6, 7, 8];
   categories: Category[] = [];
+  currentCategory: Category = new Category();
+  @Output() categoryEmmiter = new EventEmitter();
 
 
   constructor(
@@ -33,7 +35,10 @@ export class NavbarDownComponent implements OnInit {
     );
   }
 
-  
-
+  //get current category
+  getCurrentCategory(category: Category) {
+    this.currentCategory = category;
+    this.categoryEmmiter.emit(this.currentCategory);
+  }
 }
 

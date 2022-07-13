@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
+  currentCategory: Category = new Category();
+  @Output() categoryEmmiter = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  reciveCategory($event: Category) {
+    this.currentCategory = $event;
+    this.categoryEmmiter.emit(this.currentCategory);
   }
 
 }

@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product';
+import { Category } from 'src/app/models/category';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
   styleUrls: ['./body.component.css']
 })
-export class BodyComponent implements OnInit {
+export class BodyComponent {
 
   products: Product[] = [];
-  currentCategoryId: string = '';
+  @Input() currentCategory: any = new Category();
+  currentCategoryId: string = "";
+
 
   constructor(
     private router: Router,
     private productService: ProductsService
   ) { }
 
-
-  ngOnInit(): void {
-    if (this.currentCategoryId === '') {
+  ngOnChanges() {
+    this.currentCategoryId = this.currentCategory._id;
+    console.log(this.currentCategoryId);
+    if (this.currentCategoryId === '' || this.currentCategoryId === undefined) {
       this.getProducts();
     }
     else {
@@ -28,25 +32,34 @@ export class BodyComponent implements OnInit {
     }
   }
 
-    //get all products
-    getProducts() {
-      this.productService.getProducts().subscribe(
-        (data: Product[]) => {
-          this.products = data;
-          console.log(this.products);
-        }
-      )
-    }
+  // ngOnInit(): void {
+  //   if (this.currentCategoryId === '') {
+  //     this.getProducts();
+  //   }
+  //   else {
+  //     this.getProductsByCategory(this.currentCategoryId);
+  //   }
+  // }
 
-    //get products by category
-    getProductsByCategory(category: string) {
-      this.productService.getProductsByCategory(category).subscribe(
-        (data: Product[]) => {
-          this.products = data;
-          console.log(this.products);
-        }
-      )
-    }
-
-
+  //get all products
+  getProducts() {
+    this.productService.getProducts().subscribe(
+      (data: Product[]) => {
+        this.products = data;
+        console.log(this.products);
+      }
+    )
   }
+
+  //get products by category
+  getProductsByCategory(category: string) {
+    this.productService.getProductsByCategory(category).subscribe(
+      (data: Product[]) => {
+        this.products = data;
+        console.log(this.products);
+      }
+    )
+  }
+
+
+}
