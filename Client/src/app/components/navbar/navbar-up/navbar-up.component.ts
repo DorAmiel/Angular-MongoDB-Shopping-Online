@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category';
 
 @Component({
@@ -13,10 +14,9 @@ export class NavbarUpComponent implements OnInit {
   @Output() categoryEmmiter = new EventEmitter();
 
   loggedUser = JSON.parse(localStorage.getItem('user') || '{}');
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
-    console.log(this.loggedUser.username);
   }
 
   //remove user from local storage
@@ -24,11 +24,11 @@ export class NavbarUpComponent implements OnInit {
     localStorage.removeItem('user');
     alert('You have been logged out');
     this.loggedUser = !this.loggedUser;
+    this.router.navigate(['home']);
   }
 
   setCurrentCategory() {
     this.currentCategory = new Category();
-    console.log(this.currentCategory);
     this.categoryEmmiter.emit(this.currentCategory);
   }
 

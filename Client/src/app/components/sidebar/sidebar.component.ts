@@ -25,11 +25,9 @@ export class SidebarComponent implements OnInit {
   }
 
   getUserCart(cartId: string) {
-    console.log("here");
     this.cartService.getCartById(cartId).subscribe(
       (data) => {
         this.currentCart = data;
-        console.log(this.currentCart);
       }
     )
   }

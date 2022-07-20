@@ -18,6 +18,7 @@ export class ProductsService {
 
   /** GET Product by id. Will 404 if id not found */
   getProduct(id: string): Observable<Product> {
+    console.log(id)
     return this.http.get<Product>(`${this.URL}/${id}`)
   }
 

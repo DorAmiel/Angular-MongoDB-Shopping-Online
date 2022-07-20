@@ -1,13 +1,14 @@
 <div class="basket-product-container">
     <div class="basket-product-container-left">
         <div class="amount">
-            <p>+</p>
-            <p>0</p>
-            <p>-</p>
+            <p (click)="amountPlus()">+</p>
+            <p *ngIf="cartProduct">{{cartProduct.amount}}</p>
+            <p (click)="amountMinus()">-</p>
         </div>
     </div>
     <div class="basket-product-container-right">
-        <p>Product Name</p>
-        <p class="basket-product-text">Price: 15$</p>
+        <p *ngIf="product">{{product.productName}}</p>
+        <p *ngIf="product" class="basket-product-text">Price: {{product.price}}$</p>
     </div>
 </div>
+<hr>

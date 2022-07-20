@@ -36,7 +36,6 @@ export class BodyComponent {
     this.productService.getProducts().subscribe(
       (data: Product[]) => {
         this.products = data;
-        console.log(this.products);
       }
     )
   }
@@ -46,7 +45,6 @@ export class BodyComponent {
     this.productService.getProductsByCategory(category).subscribe(
       (data: Product[]) => {
         this.products = data;
-        console.log(this.products);
       }
     )
   }

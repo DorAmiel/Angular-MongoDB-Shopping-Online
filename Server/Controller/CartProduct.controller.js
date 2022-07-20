@@ -79,12 +79,8 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-
-
     CartProduct.findByIdAndUpdate(
-        req.params.cartProductId, {
-        cartProductName: req.body.cartProductName
-    }, {}, { new: true })
+        req.params.cartProductId, req.body, { new: true })
         .then(cartProduct => {
             if (!cartProduct) {
                 return res.status(404).send({

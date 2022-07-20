@@ -27,13 +27,11 @@ export class SignupComponent {
   async validateUserName(username: string): Promise<any> {
     try {
       const user = await this.userService.getUserByUserName(username).toPromise()
-      console.log(user)
       if (user) {
         return false
       }
     }
     catch (err) {
-      console.log("err")
       return true
     }
   }
@@ -41,13 +39,11 @@ export class SignupComponent {
   async validateIdNumber(idNumber: string): Promise<any> {
     try {
       const temp = await this.userService.getUserByIdNumber(idNumber).toPromise()
-      console.log(temp)
       if (temp) {
         return false
       }
     }
     catch (err) {
-      console.log("err")
       return true
     }
   }
@@ -57,7 +53,6 @@ export class SignupComponent {
     if (form.valid) {
       const user = await this.validateUserName(form.value.username)
       const id = await this.validateIdNumber(form.value.idNumber)
-      console.log("user is " + user)
       if (!user || !id) {
         alert("user name already exists or id number already exists")
         return
@@ -80,7 +75,6 @@ export class SignupComponent {
       this.myUser.lastName = form.value.lastName
       this.myUser.city = form.value.city
       this.myUser.street = form.value.street
-      console.log(this.myUser)
       this.userService.addUser(this.myUser).subscribe(msg => {
         alert('User added successfully')
         this.router.navigate(['/signin'])

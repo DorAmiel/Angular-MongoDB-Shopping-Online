@@ -20,7 +20,6 @@ export class SigninComponent implements OnInit {
   async signIn(form: any) : Promise<any> {
     try {
       const user = await this.userService.getUserByUserNameAndPassword(form.value.username, form.value.password).toPromise()
-      console.log(user)
       if (user) {
         this.router.navigate([''])
         localStorage.setItem('user', JSON.stringify(user))
@@ -28,7 +27,6 @@ export class SigninComponent implements OnInit {
     }
     catch (err) {
       alert("Invalid username or password")
-      console.log(err)
     }
   }
 }
