@@ -17,7 +17,7 @@ const initialState: User = {
 export const userReducer = createReducer(
     initialState,
     on(login, (state, action) => {
-        return action.user
+        return JSON.parse(localStorage.getItem('user') || '{}');
     }
     ),
     on(logout, (state, action) => {

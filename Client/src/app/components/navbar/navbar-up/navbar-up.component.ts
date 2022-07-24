@@ -16,15 +16,19 @@ export class NavbarUpComponent implements OnInit {
   //use router
   @Input() currentCategory: Category = new Category();
   @Output() categoryEmmiter = new EventEmitter();
-  user$: Observable<User>;
-
+  user$: Observable<any>;
+  tempUser: User = new User();
   loggedUser = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(private router: Router, private store: Store) {
     this.user$ = this.store.select(selectUserState);
   }
 
   ngOnInit(): void {
-    console.log(this.user$);
+    this.user$.subscribe(user => {
+      this.tempUser = user;
+      console.log(this.tempUser);
+    }
+    )
   }
 
   //remove user from local storage

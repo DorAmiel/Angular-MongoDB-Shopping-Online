@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
+import {Store} from '@ngrx/store';
 import { Router } from '@angular/router';
+import { login } from 'src/app/actions/user.actions';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 export class SigninComponent implements OnInit {
 
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private store: Store) { 
   }
   ngOnInit(): void {
   }
@@ -23,6 +24,7 @@ export class SigninComponent implements OnInit {
       if (user) {
         this.router.navigate([''])
         localStorage.setItem('user', JSON.stringify(user))
+        this.store.dispatch(login({user: user}))
       }
     }
     catch (err) {
