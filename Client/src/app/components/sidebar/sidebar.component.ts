@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart';
-
+import { Store } from '@ngrx/store';
+import { User } from 'src/app/models/user';
+import { selectUserState } from 'src/app/selectors/user.selector';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -9,13 +11,18 @@ import { Cart } from '../../models/cart';
 })
 export class SidebarComponent implements OnInit {
 
-  currentUser: any = JSON.parse(localStorage.getItem('user') || '{}');
-  cartId: string = this.currentUser?.cartId;
+  loggedUser: User = new User();
+  cartId: any = this.loggedUser?.cartId;
   currentCart: any = new Cart();
-  // cartProducts: any = [];
-  // cartTotal: number = 0;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private store: Store) {
+    this.store.select(selectUserState).subscribe(
+      (data) => {
+        this.loggedUser = data;
+        this.cartId = this.loggedUser.cartId;
+      }
+    )
+  }
 
   ngOnInit() {
     this.getUserCart(this.cartId);

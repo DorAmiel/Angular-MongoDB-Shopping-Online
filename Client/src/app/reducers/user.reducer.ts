@@ -2,7 +2,7 @@ import { createReducer, on } from '@ngrx/store'
 import { User } from '../models/user'
 import { login, logout } from '../actions/user.actions'
 
-const initialState: User = {
+const initialState: User = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user') || '{}') : {
     firstName: "",
     lastName: "",
     username: "",
@@ -17,12 +17,9 @@ const initialState: User = {
 export const userReducer = createReducer(
     initialState,
     on(login, (state, actions) => {
-        console.log(actions);
         return actions.user
-    }
-    ),
+    }),
     on(logout, () => {
         return initialState
-    }
-    )
+    })
 )

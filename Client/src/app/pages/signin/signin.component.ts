@@ -22,7 +22,7 @@ export class SigninComponent implements OnInit {
     try {
       const user = await this.userService.getUserByUserNameAndPassword(form.value.username, form.value.password).toPromise()
       if (user) {
-        console.log(user);
+        localStorage.setItem('user', JSON.stringify(user))
         this.store.dispatch(login({user: user}));
         this.router.navigate([''])
       }

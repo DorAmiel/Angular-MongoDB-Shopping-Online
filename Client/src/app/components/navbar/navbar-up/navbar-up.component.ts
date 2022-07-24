@@ -36,7 +36,6 @@ export class NavbarUpComponent implements OnInit {
   ngOnChanges() {
     this.user$.subscribe(user => {
       this.loggedUser = user;
-      console.log(this.loggedUser);
     });
   }
 

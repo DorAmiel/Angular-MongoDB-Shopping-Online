@@ -29,7 +29,6 @@ export class BasketProductComponent {
 
     this.productsService.getProduct(this.cartProduct.productId).subscribe(product => {
       this.product = product
-      console.log(this.product);
     });
   }
 
