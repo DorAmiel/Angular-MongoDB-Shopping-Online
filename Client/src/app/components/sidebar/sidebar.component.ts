@@ -2,8 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { Cart } from '../../models/cart';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { selectUserState } from 'src/app/selectors/user.selector';
+import { selectCartState } from 'src/app/selectors/cart.selector';
+import { setCart } from 'src/app/actions/cart.actions';
+
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -11,31 +15,43 @@ import { selectUserState } from 'src/app/selectors/user.selector';
 })
 export class SidebarComponent implements OnInit {
 
+  user$: Observable<any>;
+  // cart$: Observable<any>;
   loggedUser: User = new User();
-  cartId: any = this.loggedUser?.cartId;
   currentCart: any = new Cart();
 
   constructor(private cartService: CartService, private store: Store) {
-    this.store.select(selectUserState).subscribe(
-      (data) => {
-        this.loggedUser = data;
-        this.cartId = this.loggedUser.cartId;
-      }
-    )
+    this.user$ = this.store.select(selectUserState);
+    // this.cart$ = this.store.select(selectCartState);
   }
 
-  ngOnInit() {
-    this.getUserCart(this.cartId);
+  ngOnInit(): void {
+    this.user$.subscribe(user => {
+      this.loggedUser = user;
+      if (user.cartId) {
+        this.getUserCart(user.cartId);
+      }
+    })
   }
+
   ngOnChanges() {
-    this.getUserCart(this.cartId);
+    this.user$.subscribe(user => {
+      this.loggedUser = user;
+      if (user.cartId) {
+        this.getUserCart(user.cartId);
+      }
+    });
   }
 
-  getUserCart(cartId: string) {
-    this.cartService.getCartById(cartId).subscribe(
-      (data) => {
-        this.currentCart = data;
+  async getUserCart(cartId: string): Promise<any> {
+    try {
+      const cart = await this.cartService.getCartById(cartId).toPromise();
+      if (cart) {
+        this.store.dispatch(setCart({ cart: cart }));
+        this.currentCart = cart;
       }
-    )
+    } catch (err) {
+      console.log(err);
+    }
   }
 }

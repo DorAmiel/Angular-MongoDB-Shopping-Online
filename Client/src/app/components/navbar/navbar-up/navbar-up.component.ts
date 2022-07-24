@@ -41,8 +41,9 @@ export class NavbarUpComponent implements OnInit {
 
   //remove user from local storage
   logout() {
+    localStorage.removeItem('user');
     alert('You have been logged out');
-    this.store.dispatch(logout());
+    this.store.dispatch(logout())
   }
 
   setCurrentCategory() {

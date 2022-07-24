@@ -20,6 +20,6 @@ export const userReducer = createReducer(
         return actions.user
     }),
     on(logout, () => {
-        return initialState
+        return new User()
     })
 )

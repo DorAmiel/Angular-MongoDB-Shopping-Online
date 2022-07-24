@@ -13,8 +13,8 @@ export class CartService {
   constructor(private http: HttpClient) { }
 
   /** GET cart by id from the server */
-  getCartById(id:string): Observable<Cart[]> {
-    return this.http.get<Cart[]>(`${this.URL}/${id}`)
+  getCartById(id:string): Observable<Cart> {
+    return this.http.get<Cart>(`${this.URL}/${id}`)
   }
 
 }

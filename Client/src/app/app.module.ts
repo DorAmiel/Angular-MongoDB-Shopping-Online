@@ -17,6 +17,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { BasketProductComponent } from './components/basket-product/basket-product.component';
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
+import { cartReducer } from './reducers/cart.reducer';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { userReducer } from './reducers/user.reducer';
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot({
-      user: userReducer
+      user: userReducer,
+      cart: cartReducer
     }),
   ],
   providers: [],
