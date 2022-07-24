@@ -15,6 +15,9 @@ import { SignupComponent } from './pages/signup/signup.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { BasketProductComponent } from './components/basket-product/basket-product.component';
+import { StoreModule } from '@ngrx/store';
+import { reducer } from './reducers/user.reducer';
+
 
 @NgModule({
   declarations: [
@@ -36,6 +39,9 @@ import { BasketProductComponent } from './components/basket-product/basket-produ
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    StoreModule.forRoot({
+      user: reducer
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

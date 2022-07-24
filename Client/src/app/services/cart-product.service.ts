@@ -23,6 +23,12 @@ export class CartProductService {
     return newCartProduct
   }
 
+  /** POST cart product */
+  addCartProduct(cartProduct: any): Observable<any> {
+    let newCartProduct: any = this.http.post<CartProduct[]>(`${this.URL}`, cartProduct)
+    return newCartProduct
+  }
+
 
 
 
