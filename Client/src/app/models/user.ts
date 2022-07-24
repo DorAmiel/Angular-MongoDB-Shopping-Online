@@ -8,5 +8,4 @@ export class User {
     street: String = "";
     role: String = "user";
     cartId: String = "";
-    action: String = "";
 }

@@ -13,17 +13,16 @@ const initialState: User = {
     street: "",
     role: "user",
     cartId: "",
-    action: ""
 }
 
 // Section 2
-export function reducer(state: User = initialState, action: UserActions.Actions) {
+export function reducer(state: User[] = [initialState], action: UserActions.Actions) {
     // Section 3
     switch (action.type) {
         case UserActions.LOGIN:
-            return action.payload;
+            return [...state, action.payload]
         case UserActions.LOGOUT:
-            return action.payload
+            return [...state, action.payload]
         default:
             return state;
     }
