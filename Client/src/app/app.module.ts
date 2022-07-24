@@ -16,7 +16,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { SigninComponent } from './pages/signin/signin.component';
 import { BasketProductComponent } from './components/basket-product/basket-product.component';
 import { StoreModule } from '@ngrx/store';
-import { reducer } from './reducers/user.reducer';
+import { userReducer } from './reducers/user.reducer';
 
 
 @NgModule({
@@ -40,7 +40,7 @@ import { reducer } from './reducers/user.reducer';
     FormsModule,
     HttpClientModule,
     StoreModule.forRoot({
-      user: reducer
+      user: userReducer
     }),
   ],
   providers: [],

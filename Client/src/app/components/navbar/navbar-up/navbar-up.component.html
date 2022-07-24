@@ -16,7 +16,7 @@
     <div *ngIf="loggedUser.username" class="loggedUserContainer">
         <div class="user-side">
             <img src="../../../../assets/Icons/profile.png" class="person-icon" alt="loading">
-            <span class="helloUser">Hello {{loggedUser.firstName}}</span>
+            <span class="helloUser">Hello {{user$ | async}}</span>
         </div>
         <div class="loggedUserButtonsContainer">
             <span class="loggedUserButtons">Orders</span> &nbsp; &nbsp;
