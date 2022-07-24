@@ -16,11 +16,12 @@ const initialState: User = {
 
 export const userReducer = createReducer(
     initialState,
-    on(login, (state, action) => {
-        return JSON.parse(localStorage.getItem('user') || '{}');
+    on(login, (state, actions) => {
+        console.log(actions);
+        return actions.user
     }
     ),
-    on(logout, (state, action) => {
+    on(logout, () => {
         return initialState
     }
     )

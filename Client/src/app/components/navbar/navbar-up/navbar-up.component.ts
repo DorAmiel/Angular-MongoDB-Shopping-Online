@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { selectUserState } from 'src/app/selectors/user.selector';
 import { User } from '../../../models/user';
+import { logout } from 'src/app/actions/user.actions';
+
 
 @Component({
   selector: 'app-navbar-up',
@@ -16,27 +18,32 @@ export class NavbarUpComponent implements OnInit {
   //use router
   @Input() currentCategory: Category = new Category();
   @Output() categoryEmmiter = new EventEmitter();
+
   user$: Observable<any>;
-  tempUser: User = new User();
-  loggedUser = JSON.parse(localStorage.getItem('user') || '{}');
+  loggedUser: User = new User();
+
   constructor(private router: Router, private store: Store) {
     this.user$ = this.store.select(selectUserState);
   }
 
   ngOnInit(): void {
     this.user$.subscribe(user => {
-      this.tempUser = user;
-      console.log(this.tempUser);
+      this.loggedUser = user;
     }
     )
   }
 
+  ngOnChanges() {
+    this.user$.subscribe(user => {
+      this.loggedUser = user;
+      console.log(this.loggedUser);
+    });
+  }
+
   //remove user from local storage
   logout() {
-    localStorage.removeItem('user');
     alert('You have been logged out');
-    this.loggedUser = !this.loggedUser;
-    this.router.navigate(['home']);
+    this.store.dispatch(logout());
   }
 
   setCurrentCategory() {
