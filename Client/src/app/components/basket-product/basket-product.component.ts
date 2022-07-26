@@ -4,6 +4,8 @@ import { CartProduct } from '../../models/cart-product';
 import { CartProductService } from 'src/app/services/cart-product.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { CartService } from 'src/app/services/cart.service';
+import { setCart } from 'src/app/actions/cart.actions';
+import { Store } from '@ngrx/store';
 
 
 @Component({
@@ -18,7 +20,8 @@ export class BasketProductComponent {
   product: any;
   cartProduct: any;
 
-  constructor(private cartProductService: CartProductService, private productsService: ProductsService, private cartService: CartService) { }
+  constructor(private cartProductService: CartProductService, private productsService: ProductsService,
+    private cartService: CartService, private store: Store) { }
 
   ngOnChanges() {
     this.getProduct(this.cartProductId)
@@ -50,10 +53,11 @@ export class BasketProductComponent {
   }
 
   async updateCartTotalPrice(cartId: any, price: any) {
-    const cart = await this.cartService.getCartById(cartId).toPromise()
-    if (cart) {
-      cart.totalPrice += price
+    const oldCart = await this.cartService.getCartById(cartId).toPromise()
+    if (oldCart) {
+      oldCart.totalPrice += price
     }
-    await this.cartService.updateCart(cart).toPromise()
+    const newCart = await this.cartService.updateCart(oldCart).toPromise()
+    this.store.dispatch(setCart({ cart: newCart }))
   }
 }
