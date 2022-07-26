@@ -1,7 +1,7 @@
 const { validateBody } = require('../common/category-validation');
 const Category = require('../Model/Category.model');
 
-exports.create = async (req, res) => {
+exports.create = async(req, res) => {
     try {
 
         // Validate Request 
@@ -28,13 +28,13 @@ exports.create = async (req, res) => {
 
 exports.findAll = (req, res) => {
     Category.find().populate('products')
-    .then(categories => {
-        res.send(categories);
-    }).catch(err => {
-        res.status(500).send({
-            message: err.message || "Some error occurred while retrieving categories."
+        .then(categories => {
+            res.send(categories);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || "Some error occurred while retrieving categories."
+            });
         });
-    });
 };
 
 exports.findOne = (req, res) => {
@@ -62,9 +62,10 @@ exports.update = (req, res) => {
 
 
     Category.findByIdAndUpdate(
-        req.params.categoryId, {
-        categoryName: req.body.categoryName
-    }, {}, { new: true })
+            req.params.categoryId, {
+                categoryName: req.body.categoryName,
+                categoryImage: req.body.categoryImage
+            }, { new: true })
         .then(category => {
             if (!category) {
                 return res.status(404).send({

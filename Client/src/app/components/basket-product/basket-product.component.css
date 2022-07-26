@@ -7,9 +7,9 @@
     align-items: center;
 }
 
-.basket-product-container-right {
+.basket-product-container-middle {
     height: 100%;
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -43,4 +43,30 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+}
+
+.amounts-selector {
+    cursor: pointer;
+}
+
+.basket-product-container-right {
+    height: 100%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.remove-selector {
+    cursor: pointer;
+    width: 70%;
+    height: 30%;
+    transition: 0.2s;
+}
+
+.remove-selector:hover {
+    width: 80%;
+    height: 35%;
+    transition: 0.2s;
 }
