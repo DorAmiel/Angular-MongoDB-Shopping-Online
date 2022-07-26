@@ -7,6 +7,7 @@ import { User } from 'src/app/models/user';
 import { selectUserState } from 'src/app/selectors/user.selector';
 import { selectCartState } from 'src/app/selectors/cart.selector';
 import { setCart } from 'src/app/actions/cart.actions';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,32 +16,23 @@ import { setCart } from 'src/app/actions/cart.actions';
 })
 export class SidebarComponent implements OnInit {
 
+  cart$: Observable<any>;
   user$: Observable<any>;
-  // cart$: Observable<any>;
-  loggedUser: User = new User();
-  currentCart: any = new Cart();
-
-  constructor(private cartService: CartService, private store: Store) {
+  user: any;
+  cart: any;
+  constructor(private cartService: CartService, private store: Store, private userService: UserService) {
+    this.cart$ = this.store.select(selectCartState);
     this.user$ = this.store.select(selectUserState);
-    // this.cart$ = this.store.select(selectCartState);
+    this.user$.subscribe(user => {
+      this.user = user;
+      this.getUserCart(user.cartId);
+    });
   }
 
   ngOnInit(): void {
-    this.user$.subscribe(user => {
-      this.loggedUser = user;
-      if (user.cartId) {
-        this.getUserCart(user.cartId);
-      }
-    })
   }
 
   ngOnChanges() {
-    this.user$.subscribe(user => {
-      this.loggedUser = user;
-      if (user.cartId) {
-        this.getUserCart(user.cartId);
-      }
-    });
   }
 
   async getUserCart(cartId: string): Promise<any> {
@@ -48,7 +40,8 @@ export class SidebarComponent implements OnInit {
       const cart = await this.cartService.getCartById(cartId).toPromise();
       if (cart) {
         this.store.dispatch(setCart({ cart: cart }));
-        this.currentCart = cart;
+        this.cart = cart;
+        console.log(cart);
       }
     } catch (err) {
       console.log(err);

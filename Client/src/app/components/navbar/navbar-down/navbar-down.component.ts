@@ -18,21 +18,22 @@ export class NavbarDownComponent implements OnInit {
   categories: Category[] = [];
   currentCategory: Category = new Category();
   @Output() categoryEmmiter = new EventEmitter();
+
   cart$: Observable<any>;
   currentCart: any = new Cart();
-  constructor(
-    private router: Router,
-    private categoryService: CategoryService,
-    private store: Store
-  ) {
+
+  constructor(private router: Router, private categoryService: CategoryService, private store: Store) {
     this.cart$ = this.store.select(selectCartState);
+    this.cart$.subscribe(cart => {
+      this.currentCart = cart;
+    });
   }
 
   ngOnInit(): void {
     this.getCategories();
-    this.cart$.subscribe(cart => {
-      this.currentCart = cart;
-    });
+    setTimeout(() => {
+      console.log(this.currentCart);
+    }, 1000);
   }
 
 

@@ -1,5 +1,5 @@
 export class Cart {
     userId: string = '';
-    cartItems: any[] = [];
+    cartProducts: any[] = [];
     totalPrice: number = 0;
 }

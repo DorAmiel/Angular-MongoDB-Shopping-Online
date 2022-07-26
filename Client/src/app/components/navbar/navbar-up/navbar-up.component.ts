@@ -6,7 +6,9 @@ import { Store } from '@ngrx/store';
 import { selectUserState } from 'src/app/selectors/user.selector';
 import { User } from '../../../models/user';
 import { logout } from 'src/app/actions/user.actions';
-
+import { UserService } from 'src/app/services/user.service';
+import { CartService } from 'src/app/services/cart.service';
+import { Cart } from 'src/app/models/cart';
 
 @Component({
   selector: 'app-navbar-up',
@@ -22,21 +24,20 @@ export class NavbarUpComponent implements OnInit {
   user$: Observable<any>;
   loggedUser: User = new User();
 
-  constructor(private router: Router, private store: Store) {
+  constructor(private router: Router, private store: Store, private userService: UserService, private cartService: CartService) {
     this.user$ = this.store.select(selectUserState);
-  }
-
-  ngOnInit(): void {
     this.user$.subscribe(user => {
       this.loggedUser = user;
     }
     )
   }
 
+  ngOnInit(): void {
+
+  }
+
   ngOnChanges() {
-    this.user$.subscribe(user => {
-      this.loggedUser = user;
-    });
+
   }
 
   //remove user from local storage
