@@ -41,7 +41,6 @@ export class SidebarComponent implements OnInit {
       if (cart) {
         this.store.dispatch(setCart({ cart: cart }));
         this.cart = cart;
-        console.log(cart);
       }
     } catch (err) {
       console.log(err);

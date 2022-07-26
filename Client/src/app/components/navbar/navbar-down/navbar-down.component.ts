@@ -31,9 +31,6 @@ export class NavbarDownComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategories();
-    setTimeout(() => {
-      console.log(this.currentCart);
-    }, 1000);
   }
 
 

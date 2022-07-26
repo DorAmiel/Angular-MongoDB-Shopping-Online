@@ -18,11 +18,8 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToCart(product: any) {
-    console.log(product._id);
-    console.log(this.currentUser.cartId);
     this.cartProductService.addCartProduct({ productId: product._id, cartId: this.currentUser.cartId }).subscribe(
       (data: any) => {
-        console.log(data);
         this.ngOnInit();
 
         this.router.navigateByUrl('', { skipLocationChange: true }).then(() => {

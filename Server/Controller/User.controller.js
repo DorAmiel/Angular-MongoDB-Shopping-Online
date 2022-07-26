@@ -201,10 +201,7 @@ exports.findByUserNameAndPassword = (req, res) => {
                     message: "user not found with username or password " + req.query.userName
                 });
             }
-            console.log(user.password);
-            console.log(req.query.password);
             user.password = bcrypt.compareSync(req.query.password, user.password);
-            console.log(user.password + " after compare");
             if (user.password) {
                 res.send(user);
             }

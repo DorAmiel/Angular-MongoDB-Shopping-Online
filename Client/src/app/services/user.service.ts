@@ -44,7 +44,6 @@ export class UserService {
 
   /** create a  User  */
   addUser(user: User): Observable<any> {
-    console.log('service add')
     return this.http.post<any>(`${this.URL}`, { "firstName": user.firstName, "lastName": user.lastName, "username": user.username, "idNumber": user.idNumber, "password": user.password, "city": user.city, "street": user.street, "role": user.role })
   }
 }
