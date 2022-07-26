@@ -28,7 +28,6 @@ export class CategoryService {
 
   /** create a  Category  */
   addCategory(category: Category): Observable<any> {
-    console.log('service add')
     return this.http.post<any>(`${this.URL}`, {"categoryName": category.categoryName})
   }
 }
