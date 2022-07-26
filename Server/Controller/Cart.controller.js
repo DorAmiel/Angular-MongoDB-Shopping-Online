@@ -9,6 +9,7 @@ exports.create = async (req, res) => {
         //create a cart
         const cart = new Cart({
             userId: req.body.userId,
+            totalPrice:0
         });
         //save cart in the database
         cart.save()
