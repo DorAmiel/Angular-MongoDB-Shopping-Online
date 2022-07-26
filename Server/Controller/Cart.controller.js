@@ -9,7 +9,7 @@ exports.create = async (req, res) => {
         //create a cart
         const cart = new Cart({
             userId: req.body.userId,
-            totalPrice:0
+            totalPrice: 0
         });
         //save cart in the database
         cart.save()
@@ -60,12 +60,8 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-
-
     Cart.findByIdAndUpdate(
-        req.params.cartId, {
-        cartName: req.body.cartName
-    }, {}, { new: true })
+        req.params.cartId, req.body, { new: true })
         .then(cart => {
             if (!cart) {
                 return res.status(404).send({

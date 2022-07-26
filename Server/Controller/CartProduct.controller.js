@@ -28,7 +28,6 @@ exports.create = async (req, res) => {
                 Cart.findByIdAndUpdate(req.body.cartId).then(cart => {
                     cart.cartProducts.push(data._id);
                     cart.totalPrice += product.price;
-                    console.log(cart.totalPrice);
                     cart.save();
                     res.send(data);
                 }).catch(err => {
