@@ -44,7 +44,8 @@ body {
 
 .grid-item-4 {
     grid-area: footer;
-    background-color: rgb(65, 0, 0);
+    background-color: #f3f5f8;
+    box-shadow: 0px -1px 0px 0px rgba(0, 0, 0, 0.1);
 }
 
 app-navbar {

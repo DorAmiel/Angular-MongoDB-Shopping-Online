@@ -18,6 +18,7 @@ import { BasketProductComponent } from './components/basket-product/basket-produ
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
 import { cartReducer } from './reducers/cart.reducer';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { cartReducer } from './reducers/cart.reducer';
     HomePageComponent,
     SigninComponent,
     BasketProductComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
