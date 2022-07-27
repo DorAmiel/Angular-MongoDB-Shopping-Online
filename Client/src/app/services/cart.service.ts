@@ -19,7 +19,6 @@ export class CartService {
 
   /** UPDATE cart by id */
   updateCart(cart: any): Observable<Cart> {
-    console.log(cart);
     return this.http.put<Cart>(`${this.URL}/${cart._id}`, cart)
   }
 

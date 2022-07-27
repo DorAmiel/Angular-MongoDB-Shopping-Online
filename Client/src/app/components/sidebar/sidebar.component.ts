@@ -18,10 +18,14 @@ export class SidebarComponent implements OnInit {
 
   cart$: Observable<any>;
   user$: Observable<any>;
+
   user: any;
   cart: any;
   constructor(private cartService: CartService, private store: Store, private userService: UserService) {
     this.cart$ = this.store.select(selectCartState);
+    this.cart$.subscribe(cart => {
+      this.cart = cart;
+    });
     this.user$ = this.store.select(selectUserState);
     this.user$.subscribe(user => {
       this.user = user;

@@ -44,8 +44,13 @@ export class BasketProductComponent {
 
   amountMinus() {
     this.cartProduct.amount -= 1
-    this.updateCartProduct(this.cartProduct)
-    this.updateCartTotalPrice(this.cartProduct.cartId, -this.cartProduct.totalPrice)
+    if (this.cartProduct.amount === 0) {
+      this.removeCartProduct(this.cartProduct._id)
+    }
+    else {
+      this.updateCartProduct(this.cartProduct)
+      this.updateCartTotalPrice(this.cartProduct.cartId, -this.cartProduct.totalPrice)
+    }
   }
 
   async updateCartProduct(cartProduct: any) {
@@ -59,5 +64,14 @@ export class BasketProductComponent {
     }
     const newCart = await this.cartService.updateCart(oldCart).toPromise()
     this.store.dispatch(setCart({ cart: newCart }))
+  }
+
+  removeCartProduct(cartProductId: string) {
+    this.cartProductService.deleteCartProduct(cartProductId).subscribe(() => {
+      this.cartService.getCartById(this.cartProduct.cartId).subscribe(cart => {
+        this.store.dispatch(setCart({ cart }))
+      }
+      )
+    })
   }
 }

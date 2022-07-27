@@ -29,9 +29,10 @@ export class CartProductService {
     return newCartProduct
   }
 
-
-
-
-
+  /** DELETE cart product */
+  deleteCartProduct(cartProductId: string): Observable<any> {
+    let cartProduct: any = this.http.delete<CartProduct[]>(`${this.URL}/${cartProductId}`)
+    return cartProduct
+  }
 
 }
