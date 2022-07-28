@@ -1,15 +1,20 @@
 <div class="adminDash-container">
-    <h1>Admin Dashboard</h1>
-    <button class="add-button"(click)="createNewProduct()">Add Product</button>
-    <table>
+    <br>
+    <div class="admin-navbar">
+        <h1 class="welcome-admin-header">Admin Dashboard</h1>
+        <h2 class="admin-dashboard-header">Admin: {{user.username}}</h2>
+        <a class="nav-button" href="/home">Home Page</a>
+    </div>
+    <button class="add-button btn-hover color-1" (click)="createNewProduct()">Add Product</button>
+    <table class="table table-hover">
         <thead>
-            <tr>
-                <th>product</th>
-                <th>price</th>
-                <th>category</th>
-                <th>image</th>
-                <th>Delete</th>
+            <tr class="head-row">
+                <th id="rowrow">product</th>
+                <th>Price</th>
+                <th>Category</th>
+                <th>Image</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -17,9 +22,9 @@
                 <td>{{product.productName}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product?.categoryId?.categoryName}}</td>
-                <td>product.image</td>
-                <td><button >Edit</button></td>
-                <td><button >Delete</button></td>
+                <td>Product.image</td>
+                <td class="modify-row"><img class="modify-button" src="../../../assets/Icons/edit.png"></td>
+                <td class="modify-row"><img class="modify-button" src="../../../assets/Icons/remove.png"></td>
             </tr>
         </tbody>
     </table>

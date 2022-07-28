@@ -24,6 +24,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.user);
+    
     if (this.user.role !== 'admin') {
       this.router.navigate(['/']);
     }

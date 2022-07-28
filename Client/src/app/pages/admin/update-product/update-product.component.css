@@ -1,5 +1,5 @@
 .signup-container {
-    height: 80vh;
+    height: 60vh;
     width: 40vw;
     position: absolute;
     top: 50%;
@@ -10,12 +10,11 @@
     box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 90px;
 }
 
-h1 {
+.headline {
     text-align: center;
-    font-size: 6em;
+    font-size: 5em;
     font-family: 'Quicksand', sans-serif;
     font-style: oblique;
-    color: #81a7f3;
 }
 
 .signup-icon {
@@ -42,4 +41,27 @@ h1 {
 
 .goBack-button {
     width: 20%;
+}
+
+.admin-navbar {
+    text-align: center;
+}
+
+.welcome-admin-header {
+    font-size: 6rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.nav-buttons {
+    margin: auto;
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-button {
+    font-size: 1.8rem;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
 }

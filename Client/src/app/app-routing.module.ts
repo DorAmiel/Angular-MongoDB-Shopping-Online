@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'admin/update-product', component: UpdateProductComponent },
   { path: '**', redirectTo: '' }
 ];
-
+  
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

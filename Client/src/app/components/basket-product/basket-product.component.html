@@ -1,3 +1,4 @@
+<h1 *ngIf="cartProduct">Hello</h1>
 <div class="basket-product-container card">
     <div class="basket-product-container-left">
         <div class="amount">
@@ -11,7 +12,6 @@
         <p *ngIf="product" class="basket-product-text">Price: {{product.price}}$</p>
     </div>
     <div class="basket-product-container-right">
-        <img (click)="removeCartProduct(cartProduct._id)" class="remove-selector"
-            src="../../../assets/Icons/remove.png">
+        <img (click)="removeCartProduct(cartProduct._id)" class="remove-selector" src="../../../assets/Icons/remove.png">
     </div>
 </div>

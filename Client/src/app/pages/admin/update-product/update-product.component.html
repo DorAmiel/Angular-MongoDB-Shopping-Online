@@ -1,15 +1,20 @@
-<div class="signup-container">
-    <h1>New Product</h1>
+<div class="admin-navbar">
+    <br>
+    <h1 class="welcome-admin-header">Welcome Admin</h1>
+    <div class="nav-buttons">
+        <a class="nav-button" href="/home">Home Page</a>
+        <a class="nav-button" href="/admin">Admin Dash</a>
+    </div>
     <hr>
-    <form #signupForm1="ngForm"  class="input-container">
-        <input class="is-info signup-inupt is-large input" type="username" placeholder="product name" name="username"
-            ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="number" placeholder="Price" name="password"
-            ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="text" placeholder="caregory"
-            name="confirmPassword" ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="file"  name="idNumber"
-            ngModel><br>
+</div>
+<div class="signup-container">
+    <h3 class="headline">New Product</h3>
+    <hr>
+    <form #signupForm1="ngForm" class="input-container">
+        <input class="is-info signup-inupt is-large input" type="username" placeholder="product name" name="username" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="number" placeholder="Price" name="password" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="text" placeholder="caregory" name="confirmPassword" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="file" name="idNumber" ngModel><br>
         <button class="button is-link is-light is-large signup-inupt signup-button" type="submit">Create New Product</button>
     </form>
 </div>
