@@ -33,7 +33,7 @@ export class NavbarUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    console.log(this.loggedUser);
   }
 
   ngOnChanges() {
@@ -52,4 +52,7 @@ export class NavbarUpComponent implements OnInit {
     this.categoryEmmiter.emit(this.currentCategory);
   }
 
+  navigateToAdminPage() {
+    this.router.navigate(['/admin']);
+  }
 }

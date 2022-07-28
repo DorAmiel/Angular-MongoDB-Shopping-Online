@@ -1,6 +1,6 @@
 export class Product {
     productName: String = ""
-    categoryId: String = ""
+    categoryName: String = ""
     price: Number = 0
     image: String = ""
 }

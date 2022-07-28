@@ -19,6 +19,8 @@ import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
 import { cartReducer } from './reducers/cart.reducer';
 import { FooterComponent } from './components/footer/footer.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { FooterComponent } from './components/footer/footer.component';
     SigninComponent,
     BasketProductComponent,
     FooterComponent,
+    AdminComponent,
+    UpdateProductComponent,
   ],
   imports: [
     BrowserModule,

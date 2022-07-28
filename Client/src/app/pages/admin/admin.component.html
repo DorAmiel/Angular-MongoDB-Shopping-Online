@@ -1,0 +1,26 @@
+<div class="adminDash-container">
+    <h1>Admin Dashboard</h1>
+    <button class="add-button"(click)="createNewProduct()">Add Product</button>
+    <table>
+        <thead>
+            <tr>
+                <th>product</th>
+                <th>price</th>
+                <th>category</th>
+                <th>image</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{product.productName}}</td>
+                <td>{{product.price}}</td>
+                <td>{{product?.categoryId?.categoryName}}</td>
+                <td>product.image</td>
+                <td><button >Edit</button></td>
+                <td><button >Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

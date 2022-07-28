@@ -1,0 +1,39 @@
+*{
+    text-align: center;
+}
+.adminDash-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #f3f5f8;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: large;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  .add-button{
+    width: 96%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    background-color: #796ebe;
+    border-radius: 5px;
+    font-size: large;
+    font-weight: bold;
+    color: #dddddd;
+  }

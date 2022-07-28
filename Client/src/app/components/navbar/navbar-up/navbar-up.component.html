@@ -20,6 +20,7 @@
         </div>
         <div class="loggedUserButtonsContainer">
             <span class="loggedUserButtons">Orders</span> &nbsp; &nbsp;
+            <span *ngIf="loggedUser.role =='admin'" class="loggedUserButtons" (click)="navigateToAdminPage()">admin</span> &nbsp; &nbsp;
             <span (click)="logout()" class="loggedUserButtons">Logout</span>
         </div>
     </div>
