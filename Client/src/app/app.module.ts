@@ -18,6 +18,7 @@ import { BasketProductComponent } from './components/basket-product/basket-produ
 import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
 import { cartReducer } from './reducers/cart.reducer';
+import { categoryReducer } from './reducers/category.reducer';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
@@ -48,7 +49,8 @@ import { UpdateProductComponent } from './pages/admin/update-product/update-prod
     HttpClientModule,
     StoreModule.forRoot({
       user: userReducer,
-      cart: cartReducer
+      cart: cartReducer,
+      category: categoryReducer
     }),
   ],
   providers: [],

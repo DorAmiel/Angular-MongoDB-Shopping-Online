@@ -13,6 +13,10 @@
     <form #productForm="ngForm" class="input-container">
         <input class="is-info signup-inupt is-large input" type="text" placeholder="product name" name="productName" ngModel><br>
         <input class="is-info signup-inupt is-large input" type="number" placeholder="Price" name="price" ngModel><br>
+        <select class="is-info signup-inupt is-large select" name="city" ngModel>
+            <option class="is-info signup-inupt is-large select" *ngFor="let city of cities" value={{city}}>{{city}}
+            </option>
+        </select><br>
         <input class="is-info signup-inupt is-large input" type="text" placeholder="category" name="categoryName" ngModel><br>
         <input class="is-info signup-inupt is-large input" type="file" name="productImage" ngModel><br>
         <button class="button is-link is-light is-large signup-inupt signup-button" type="submit" (click)="createNewProduct(productForm)">Create New Product</button>
