@@ -41,7 +41,7 @@ exports.create = async (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    Product.find().populate('categoryId').then(products => {
+    Product.find().populate('categoryId', 'categoryName').then(products => {
         res.send(products);
     }
     ).catch(err => {
@@ -73,8 +73,6 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-
-
     Product.findByIdAndUpdate(
         req.params.productId, {
         productName: req.body.productName
@@ -115,6 +113,27 @@ exports.delete = (req, res) => {
             }
             return res.status(500).send({
                 message: "Could not delete product with id " + req.params.productId
+            });
+        });
+}
+
+exports.findByCategory = (req, res) => {
+    Product.find({ categoryId: req.query.categoryName }).populate('categoryId', 'categoryName')
+        .then(products => {
+            if (!products) {
+                return res.status(404).send({
+                    message: "products not found with category id " + req.query.categoryName
+                });
+            }
+            res.send(products);
+        }).catch(err => {
+            if (err.kind === 'ObjectId') {
+                return res.status(404).send({
+                    message: "products not found with category id " + req.query.categoryName
+                });
+            }
+            return res.status(500).send({
+                message: "Error retrieving products with category id " + req.query.categoryName
             });
         });
 }

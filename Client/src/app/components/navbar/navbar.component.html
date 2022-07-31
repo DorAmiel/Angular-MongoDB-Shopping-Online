@@ -1,2 +1,2 @@
-<app-navbar-up></app-navbar-up>
-<app-navbar-down></app-navbar-down>
+<app-navbar-up [currentCategory]="currentCategory" (categoryEmmiter)="reciveCategory($event)" ></app-navbar-up>
+<app-navbar-down (categoryEmmiter)="reciveCategory($event)"></app-navbar-down>

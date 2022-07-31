@@ -79,12 +79,8 @@ exports.findOne = (req, res) => {
 };
 
 exports.update = (req, res) => {
-
-
     CartProduct.findByIdAndUpdate(
-        req.params.cartProductId, {
-        cartProductName: req.body.cartProductName
-    }, {}, { new: true })
+        req.params.cartProductId, req.body, { new: true })
         .then(cartProduct => {
             if (!cartProduct) {
                 return res.status(404).send({
@@ -112,6 +108,17 @@ exports.delete = (req, res) => {
                     message: "cartProduct not found with id " + req.params.cartProductId
                 });
             }
+            // find cart by id and remove cartProduct from cartProducts
+            Cart.findById(cartProduct.cartId).then(cart => {
+                ;
+                cart.cartProducts.remove(cartProduct._id);
+                cart.totalPrice -= cartProduct.totalPrice*cartProduct.amount;
+                cart.save();
+            }).catch(err => {
+                res.status(500).send({
+                    message: err.message || "Some error occurred while removing cartProduct."
+                });
+            });
             res.send({ message: "cartProduct deleted successfully!" });
         }).catch(err => {
             if (err.kind === 'ObjectId' || err.name === 'NotFound') {

@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const CategorySchema = mongoose.Schema({
     categoryName: String,
-    products: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product'}],
+    categoryImage: String,
+    products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
 }, {
     timestamps: true
 });

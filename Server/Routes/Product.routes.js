@@ -5,7 +5,14 @@ module.exports = (app) => {
     app.post('/products', products.create);
 
     // Retrieve all products
-    app.get('/products', products.findAll);
+    app.get('/products', (req, res) => {
+        if (req.query.categoryName) {
+            products.findByCategory(req, res);
+        }
+        else {
+            products.findAll(req, res);
+        }
+    })
 
     // Retrieve a single product with productId
     app.get('/products/:productId', products.findOne);
