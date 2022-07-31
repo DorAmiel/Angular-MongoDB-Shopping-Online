@@ -3,6 +3,10 @@ import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Product } from '../../models/product';
 import { Category } from 'src/app/models/category';
+import { Store } from '@ngrx/store';
+import { getProducts, setProducts } from '../../actions/products.actions';
+
+
 
 @Component({
   selector: 'app-body',
@@ -18,7 +22,8 @@ export class BodyComponent {
 
   constructor(
     private router: Router,
-    private productService: ProductsService
+    private productService: ProductsService,
+    private store: Store<any>
   ) { }
 
   ngOnChanges() {
@@ -36,6 +41,7 @@ export class BodyComponent {
     this.productService.getProducts().subscribe(
       (data: Product[]) => {
         this.products = data;
+        this.store.dispatch(setProducts({ Products: this.products }));
       }
     )
   }

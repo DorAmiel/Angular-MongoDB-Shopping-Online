@@ -11,9 +11,9 @@
     <h3 class="headline">New Product</h3>
     <hr>
     <form #productForm="ngForm" class="input-container">
-        <input class="is-info signup-inupt is-large input" type="text" placeholder="product name" name="productName" ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="number" placeholder="Price" name="price" ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="text" placeholder="category" name="categoryName" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="text" placeholder={{product.productName}} name="productName" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="number" placeholder={{product.price}} name="price" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="text" placeholder={{product.categoryName}} name="categoryName" ngModel><br>
         <input class="is-info signup-inupt is-large input" type="file" name="productImage" ngModel><br>
         <button class="button is-link is-light is-large signup-inupt signup-button" type="submit" (click)="createNewProduct(productForm)">Create New Product</button>
     </form>
