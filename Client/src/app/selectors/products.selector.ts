@@ -7,6 +7,6 @@ export const selectProductsState = createSelector(
 );
 
 export const selectProductState = createSelector(
-    createFeatureSelector("product"),
+    createFeatureSelector("products"),
     (state: Product) => state
 );

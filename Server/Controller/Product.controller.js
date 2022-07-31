@@ -74,9 +74,7 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
     Product.findByIdAndUpdate(
-        req.params.productId, {
-        productName: req.body.productName
-    }, {}, { new: true })
+        req.params.productId, req.body, { new: true })
         .then(product => {
             if (!product) {
                 return res.status(404).send({

@@ -6,6 +6,8 @@ import { User } from '../../models/user';
 import { Observable } from 'rxjs';
 import { ProductsService } from 'src/app/services/products.service';
 import { Product } from 'src/app/models/product';
+import { setProducts } from 'src/app/actions/products.actions';
+
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -16,6 +18,7 @@ export class AdminComponent implements OnInit {
   user$: Observable<any>;
   user: User = new User();
   products: any = [];
+
   constructor(private store: Store, private router: Router, private productService: ProductsService) {
     this.user$ = this.store.select(selectUserState);
     this.user$.subscribe(user => {
@@ -24,8 +27,6 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.user);
-    
     if (this.user.role !== 'admin') {
       this.router.navigate(['/']);
     }
@@ -36,14 +37,15 @@ export class AdminComponent implements OnInit {
     this.productService.getProducts().subscribe(
       (data: Product[]) => {
         this.products = data;
-        console.log(this.products[this.products.length - 1]);
       }
     )
   }
-  createNewProductPage(){
-    this.router.navigate(['/admin/update-product']);
+  createNewProductPage() {
+    this.store.dispatch(setProducts({ Products: null }));
+    this.router.navigate(['/admin/new-product']);
   }
-  updateProductPage(){
+  updateProductPage(product: any) {
+    this.store.dispatch(setProducts({ Products: product }));
     this.router.navigate(['/admin/update-product']);
   }
 }
