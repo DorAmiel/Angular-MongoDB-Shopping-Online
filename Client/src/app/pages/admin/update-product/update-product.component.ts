@@ -39,6 +39,8 @@ export class UpdateProductComponent implements OnInit {
   }
 
   updateProduct(form: any) {
+    form.value.categoryName !== "" ? form.value.categoryId : this.product.categoryId;
+    console.log(form.value);
     this.productService.addProduct(form.value).subscribe(
       (data: any) => {
         this.router.navigate(['/admin/products']);

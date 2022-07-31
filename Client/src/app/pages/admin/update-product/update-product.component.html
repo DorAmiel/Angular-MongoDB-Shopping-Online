@@ -12,11 +12,12 @@
     <hr>
     <form #productForm="ngForm" class="input-container">
         <input class="is-info signup-inupt is-large input" type="text" placeholder={{product.productName}}
-            name="productName" ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="number" placeholder={{product.price}} name="price"
+            value={{product.productName}} name="productName" ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="number" placeholder={{product.price}} value={{product.price}} name="price"
             ngModel><br>
         <select class="is-info signup-inupt is-large select" name="categoryName" ngModel>
-            <option class="is-info signup-inupt is-large select" value={{product.categoryId}}>{{product.categoryId.categoryName}}</option>
+            <option class="is-info signup-inupt is-large select" value="">
+                {{product.categoryId.categoryName}}</option>
             <option class="is-info signup-inupt is-large select" *ngFor="let category of categories"
                 value={{category._id}}>{{category.categoryName}}
             </option>
