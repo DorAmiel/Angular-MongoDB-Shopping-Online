@@ -8,21 +8,20 @@
     <hr>
 </div>
 <div class="signup-container">
-    <h3 class="headline">Update Product</h3>
+    <h3 class="headline">New Product</h3>
     <hr>
     <form #productForm="ngForm" class="input-container">
-        <input class="is-info signup-inupt is-large input" type="text" placeholder={{product.productName}}
-            name="productName" ngModel><br>
-        <input class="is-info signup-inupt is-large input" type="number" placeholder={{product.price}} name="price"
+        <input class="is-info signup-inupt is-large input" type="text" placeholder="product name" name="productName"
             ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="number" placeholder="price" name="price" ngModel><br>
         <select class="is-info signup-inupt is-large select" name="categoryName" ngModel>
-            <option class="is-info signup-inupt is-large select" value={{product.categoryId}}>{{product.categoryId.categoryName}}</option>
+            <option value="">select category</option>
             <option class="is-info signup-inupt is-large select" *ngFor="let category of categories"
                 value={{category._id}}>{{category.categoryName}}
             </option>
         </select><br>
         <input class="is-info signup-inupt is-large input" type="file" name="productImage" ngModel><br>
         <button class="button is-link is-light is-large signup-inupt signup-button" type="submit"
-            (click)="updateProduct(productForm)">Update Product</button>
+            (click)="createNewProduct(productForm)">Create New Product</button>
     </form>
 </div>

@@ -8,12 +8,11 @@ import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/categories.service';
 
 @Component({
-  selector: 'app-update-product',
-  templateUrl: './update-product.component.html',
-  styleUrls: ['./update-product.component.css']
+  selector: 'app-new-product',
+  templateUrl: './new-product.component.html',
+  styleUrls: ['./new-product.component.css']
 })
-export class UpdateProductComponent implements OnInit {
-
+export class NewProductComponent implements OnInit {
   product$: Observable<Product>;
   product: any = new Product();
   categories: any[] = [];
@@ -24,24 +23,21 @@ export class UpdateProductComponent implements OnInit {
   ) {
     this.product$ = this.store.select(selectProductState);
     this.product$.subscribe(
-      (data: any) => {
-        console.log(data);
-        if (data.length <= 0) {
-          this.router.navigate(['/admin/']);
-        }
+      (data: Product) => {
         this.product = data;
       });
   }
 
   ngOnInit(): void {
-
     this.getCategories();
   }
-
-  updateProduct(form: any) {
-    this.productService.addProduct(form.value).subscribe(
+  
+  createNewProduct(form: any) {
+    let product = form.value;
+    console.log(product);
+    this.productService.addProduct(product).subscribe(
       (data: any) => {
-        this.router.navigate(['/admin/products']);
+        this.router.navigate(['/admin']);
       })
   }
 
@@ -52,4 +48,5 @@ export class UpdateProductComponent implements OnInit {
       }
     );
   }
+
 }

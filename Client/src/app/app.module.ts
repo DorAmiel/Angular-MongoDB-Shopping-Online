@@ -19,9 +19,11 @@ import { StoreModule } from '@ngrx/store';
 import { userReducer } from './reducers/user.reducer';
 import { cartReducer } from './reducers/cart.reducer';
 import { productsReducer } from './reducers/products.reducer';
+import { categoryReducer } from './reducers/category.reducer';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
+import { NewProductComponent } from './pages/admin/new-product/new-product.component';
 
 
 @NgModule({
@@ -41,6 +43,7 @@ import { UpdateProductComponent } from './pages/admin/update-product/update-prod
     FooterComponent,
     AdminComponent,
     UpdateProductComponent,
+    NewProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,6 +54,7 @@ import { UpdateProductComponent } from './pages/admin/update-product/update-prod
       user: userReducer,
       cart: cartReducer,
       products: productsReducer,
+      category: categoryReducer
     }),
   ],
   providers: [],

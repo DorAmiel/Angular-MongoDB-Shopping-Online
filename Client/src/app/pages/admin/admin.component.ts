@@ -42,7 +42,7 @@ export class AdminComponent implements OnInit {
   }
   createNewProductPage() {
     this.store.dispatch(setProducts({ Products: null }));
-    this.router.navigate(['/admin/update-product']);
+    this.router.navigate(['/admin/new-product']);
   }
   updateProductPage(product: any) {
     this.store.dispatch(setProducts({ Products: product }));
