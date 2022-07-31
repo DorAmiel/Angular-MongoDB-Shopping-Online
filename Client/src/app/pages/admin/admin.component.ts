@@ -40,7 +40,10 @@ export class AdminComponent implements OnInit {
       }
     )
   }
-  createNewProduct(){
+  createNewProductPage(){
+    this.router.navigate(['/admin/update-product']);
+  }
+  updateProductPage(){
     this.router.navigate(['/admin/update-product']);
   }
 }
