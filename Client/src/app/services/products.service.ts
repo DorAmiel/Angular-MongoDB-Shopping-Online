@@ -32,9 +32,13 @@ export class ProductsService {
     return this.http.post<any>(`${this.URL}`, { "productName": product.productName, "categoryId": product.categoryName, "price": product.price, "image": product.image })
   }
 
-  /** get products by category  */
+  /** GET products by category  */
   getProductsByCategory(categoryName: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.URL}/?categoryName=${categoryName}`)
+  }
+  /** UPDATE procudt */
+  updateProduct(product: any): Observable<any> {
+    return this.http.put<any>(`${this.URL}/${product._id}`, { "productName": product.productName, "categoryId": product.categoryName, "price": product.price, "image": product.image })
   }
 
 }

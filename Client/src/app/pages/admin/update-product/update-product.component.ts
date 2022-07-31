@@ -39,11 +39,15 @@ export class UpdateProductComponent implements OnInit {
   }
 
   updateProduct(form: any) {
-    form.value.categoryName !== "" ? form.value.categoryId : this.product.categoryId;
+    form.value.categoryName === "" ? form.value.categoryName = this.product.categoryId._id : null;
+    form.value.productName === "" ? form.value.productName = this.product.productName : null;
+    form.value.price === "" ? form.value.price = this.product.price : null;
+    // form.value.categoryName === "" ? form.value.categoryName = this.product.categoryId._id : null;
     console.log(form.value);
-    this.productService.addProduct(form.value).subscribe(
+    let newProduct = { ...form.value, _id: this.product._id };
+    this.productService.updateProduct(newProduct).subscribe(
       (data: any) => {
-        this.router.navigate(['/admin/products']);
+        this.router.navigate(['/admin']);
       })
   }
 
