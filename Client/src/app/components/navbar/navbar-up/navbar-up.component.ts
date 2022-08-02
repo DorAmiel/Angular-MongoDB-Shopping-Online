@@ -10,7 +10,6 @@ import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
 import { selectProductsState } from 'src/app/selectors/products.selector';
 
-
 @Component({
   selector: 'app-navbar-up',
   templateUrl: './navbar-up.component.html',
@@ -27,6 +26,7 @@ export class NavbarUpComponent implements OnInit {
 
   products$: Observable<any>;
   products: any;
+  filterProducts: any;
 
   constructor(private router: Router, private store: Store, private userService: UserService, private cartService: CartService) {
     this.user$ = this.store.select(selectUserState);
@@ -58,6 +58,16 @@ export class NavbarUpComponent implements OnInit {
   setCurrentCategory() {
     this.currentCategory = new Category();
     this.categoryEmmiter.emit(this.currentCategory);
+  }
+
+  setFilterProducts(event: any) {
+    console.log(event);
+    // let value = target.value;
+    // console.log(value);
+    // this.products = this.products.filter((product: any) => {
+      // return product.name.toLowerCase().includes(value.toLowerCase());
+    // }
+    // )
   }
 
   navigateToAdminPage() {

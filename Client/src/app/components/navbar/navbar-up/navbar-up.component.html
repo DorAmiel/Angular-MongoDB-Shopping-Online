@@ -4,11 +4,11 @@
     <span class="supermarket-title market-title">Market</span>
 </div>
 <div class="search-container">
-    <p class="control has-icons-left has-icons-right ">
+    <form class="control has-icons-left has-icons-right ">
         <i><img class="search-icon" src="../../../../assets/Icons/magnifying-glass.png"></i>
         <input class="input is-rounded is-info is-hovered is-large" type="text"
-            src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search...">
-    </p>
+            src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search..." value="" (change)="setFilterProducts($event)">
+    </form>
 </div>
 
 
