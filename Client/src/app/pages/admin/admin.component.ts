@@ -33,6 +33,12 @@ export class AdminComponent implements OnInit {
     this.getProducts();
   }
 
+  removeProduct(productId: any) {
+    this.productService.delProduct(productId).subscribe(res => {
+      this.getProducts();
+    });
+  }
+
   getProducts() {
     this.productService.getProducts().subscribe(
       (data: Product[]) => {

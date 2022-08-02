@@ -8,7 +8,8 @@ import { User } from '../../../models/user';
 import { logout } from 'src/app/actions/user.actions';
 import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
-import { Cart } from 'src/app/models/cart';
+import { selectProductsState } from 'src/app/selectors/products.selector';
+
 
 @Component({
   selector: 'app-navbar-up',
@@ -24,12 +25,20 @@ export class NavbarUpComponent implements OnInit {
   user$: Observable<any>;
   loggedUser: User = new User();
 
+  products$: Observable<any>;
+  products: any;
+
   constructor(private router: Router, private store: Store, private userService: UserService, private cartService: CartService) {
     this.user$ = this.store.select(selectUserState);
     this.user$.subscribe(user => {
       this.loggedUser = user;
     }
     )
+    this.products$ = this.store.select(selectProductsState);
+    this.products$.subscribe(products => {
+      this.products = products;
+      console.log(this.products);
+    });
   }
 
   ngOnInit(): void {
