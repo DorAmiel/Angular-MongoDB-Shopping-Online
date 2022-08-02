@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Product } from 'src/app/models/product';
 import { selectProductState } from 'src/app/selectors/products.selector';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/categories.service';
 
@@ -16,6 +16,8 @@ export class NewProductComponent implements OnInit {
   product$: Observable<Product>;
   product: any = new Product();
   categories: any[] = [];
+  productImage: any;
+
   constructor(private productService: ProductsService,
     private store: Store<any>,
     private categoryService: CategoryService,
@@ -31,11 +33,21 @@ export class NewProductComponent implements OnInit {
   ngOnInit(): void {
     this.getCategories();
   }
-  
+
+
+  sendFile(event: any) {
+    console.log(event);
+    this.productImage = <File>event.target.files[0];
+  }
+
   createNewProduct(form: any) {
-    let product = form.value;
-    console.log(product);
-    this.productService.addProduct(product).subscribe(
+    let newform = new FormData();
+    newform.append('productName', form.value.productName);
+    newform.append('categoryId', form.value.categoryId);
+    newform.append('price', form.value.price);
+    newform.append('image', this.productImage, this.productImage.name);
+
+    this.productService.addProduct(newform).subscribe(
       (data: any) => {
         this.router.navigate(['/admin']);
       })

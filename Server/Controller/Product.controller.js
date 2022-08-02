@@ -3,7 +3,7 @@ const Product = require('../Model/Product.model');
 const Categories = require('../Model/Category.model');
 
 
-exports.create = async(req, res) => {
+exports.create = async (req, res) => {
     const { path: image } = req.file;
     try {
         // Validate Request 
@@ -13,7 +13,7 @@ exports.create = async(req, res) => {
             productName: req.body.productName,
             categoryId: req.body.categoryId,
             price: req.body.price,
-            image: image.replace('\\', '/')
+            image: "../../../assets/images/" + image.split('\\')[5]
         });
         //save product in the database
         product.save()
@@ -37,8 +37,6 @@ exports.create = async(req, res) => {
             message: error.message || "Some error occurred while creating the product."
         });
     }
-
-
 };
 
 exports.findAll = (req, res) => {
@@ -74,7 +72,7 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
     Product.findByIdAndUpdate(
-            req.params.productId, req.body, { new: true })
+        req.params.productId, req.body, { new: true })
         .then(product => {
             if (!product) {
                 return res.status(404).send({
