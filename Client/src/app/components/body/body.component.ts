@@ -5,7 +5,8 @@ import { Product } from '../../models/product';
 import { Category } from 'src/app/models/category';
 import { Store } from '@ngrx/store';
 import { getProducts, setProducts } from '../../actions/products.actions';
-
+import { Observable } from 'rxjs';
+import { selectProductsState } from 'src/app/selectors/products.selector';
 
 
 @Component({
@@ -15,7 +16,8 @@ import { getProducts, setProducts } from '../../actions/products.actions';
 })
 export class BodyComponent {
 
-  products: Product[] = [];
+  products$: Observable<any>;
+  products: any[] = [];
   @Input() currentCategory: any = new Category();
   currentCategoryId: string = "";
 
@@ -24,7 +26,12 @@ export class BodyComponent {
     private router: Router,
     private productService: ProductsService,
     private store: Store<any>
-  ) { }
+  ) {
+    this.products$ = this.store.select(selectProductsState);
+    this.products$.subscribe(products => {
+      this.products = products;
+    });
+  }
 
   ngOnChanges() {
     this.currentCategoryId = this.currentCategory._id;

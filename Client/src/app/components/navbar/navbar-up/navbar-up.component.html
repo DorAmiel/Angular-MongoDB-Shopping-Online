@@ -7,7 +7,7 @@
     <form class="control has-icons-left has-icons-right ">
         <i><img class="search-icon" src="../../../../assets/Icons/magnifying-glass.png"></i>
         <input class="input is-rounded is-info is-hovered is-large" type="text"
-            src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search..." value="" (change)="setFilterProducts($event)">
+            src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search..." value="" (input)="setFilterProducts($event.target)">
     </form>
 </div>
 
