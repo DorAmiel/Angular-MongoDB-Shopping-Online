@@ -3,7 +3,8 @@ const Product = require('../Model/Product.model');
 const Categories = require('../Model/Category.model');
 
 
-exports.create = async (req, res) => {
+exports.create = async(req, res) => {
+    const { path: image } = req.file;
     try {
         // Validate Request 
         await validateBody(req.body);
@@ -12,7 +13,7 @@ exports.create = async (req, res) => {
             productName: req.body.productName,
             categoryId: req.body.categoryId,
             price: req.body.price,
-            image: req.body.image
+            image: image.replace('\\', '/')
         });
         //save product in the database
         product.save()
@@ -43,8 +44,7 @@ exports.create = async (req, res) => {
 exports.findAll = (req, res) => {
     Product.find().populate('categoryId', 'categoryName').then(products => {
         res.send(products);
-    }
-    ).catch(err => {
+    }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving products."
         });
@@ -74,7 +74,7 @@ exports.findOne = (req, res) => {
 
 exports.update = (req, res) => {
     Product.findByIdAndUpdate(
-        req.params.productId, req.body, { new: true })
+            req.params.productId, req.body, { new: true })
         .then(product => {
             if (!product) {
                 return res.status(404).send({
