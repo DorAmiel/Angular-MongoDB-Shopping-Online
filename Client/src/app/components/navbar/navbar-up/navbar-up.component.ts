@@ -33,7 +33,6 @@ export class NavbarUpComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.loggedUser);
   }
 
   ngOnChanges() {

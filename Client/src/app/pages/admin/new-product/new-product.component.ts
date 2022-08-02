@@ -36,7 +36,6 @@ export class NewProductComponent implements OnInit {
 
 
   sendFile(event: any) {
-    console.log(event);
     this.productImage = <File>event.target.files[0];
   }
 
