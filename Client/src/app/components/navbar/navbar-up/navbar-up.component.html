@@ -6,8 +6,7 @@
 <div class="search-container">
     <form class="control has-icons-left has-icons-right ">
         <i><img class="search-icon" src="../../../../assets/Icons/magnifying-glass.png"></i>
-        <input class="input is-rounded is-info is-hovered is-large" type="text"
-            src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search..." value="" (input)="setFilterProducts($event.target)">
+        <input class="input is-rounded is-info is-hovered is-large" type="text" src="../../../../assets/Icons/magnifying-glass.png" placeholder="Search..." value="" (input)="setFilterProducts($event.target)">
     </form>
 </div>
 
@@ -19,13 +18,11 @@
             <span class="helloUser">Hello {{loggedUser.firstName}}</span>
         </div>
         <div class="loggedUserButtonsContainer">
-            <span class="loggedUserButtons">Orders</span> &nbsp; &nbsp;
+            <a href="/orders-history" class="loggedUserButtons orders-navigation-button">Orders</a> &nbsp; &nbsp;
             <span *ngIf="loggedUser.role =='admin'" class="loggedUserButtons" (click)="navigateToAdminPage()">admin</span> &nbsp; &nbsp;
             <span (click)="logout()" class="loggedUserButtons">Logout</span>
         </div>
     </div>
-    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/log-in.png" routerLink="/signin"
-        class="login-buttons" alt="loading">
-    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/signup.png" routerLink="/signup"
-        class="login-buttons" alt="loading">
+    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/log-in.png" routerLink="/signin" class="login-buttons" alt="loading">
+    <img *ngIf="!loggedUser.username" src="../../../../assets/Icons/signup.png" routerLink="/signup" class="login-buttons" alt="loading">
 </div>

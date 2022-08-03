@@ -24,6 +24,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
 import { NewProductComponent } from './pages/admin/new-product/new-product.component';
+import { OrdersHistoryComponent } from './pages/orders-history/orders-history.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { NewProductComponent } from './pages/admin/new-product/new-product.compo
     AdminComponent,
     UpdateProductComponent,
     NewProductComponent,
+    OrdersHistoryComponent,
   ],
   imports: [
     BrowserModule,
