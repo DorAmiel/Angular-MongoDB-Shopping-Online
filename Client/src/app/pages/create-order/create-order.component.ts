@@ -27,7 +27,7 @@ export class CreateOrderComponent implements OnInit {
 
   cart: any;
 
-  constructor(private store: Store, private cartService: CartService) {
+  constructor(private store: Store, private cartService: CartService, private orderService: OrdersService) {
     this.user$ = this.store.select(selectUserState)
     this.user$.subscribe(user => {
       this.user = user;
@@ -39,7 +39,7 @@ export class CreateOrderComponent implements OnInit {
   ngOnInit(): void {
     this.setCurrentDate();
     console.log(this.user);
-    
+
   }
 
 
@@ -64,6 +64,29 @@ export class CreateOrderComponent implements OnInit {
       const cart = await this.cartService.getCartById(cartId).toPromise();
       if (cart) {
         this.cart = cart;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  //create order
+  createOrder(form: any) {
+    console.log(form.value);
+    const currentOrder = {
+      userId: this.user._id,
+      cartId: this.user.cartId,
+      totalPrice: this.cart.totalPrice,
+      city: form.value.city,
+      street: form.value.street,
+      shippingDate: form.value.shippingDate,
+      creditCard: form.value.creditCard
+    }
+
+    try {
+      const order = this.orderService.addOrder(currentOrder).toPromise();
+      if (order) {
+        console.log(order);
       }
     } catch (err) {
       console.log(err);
