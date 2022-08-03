@@ -3,7 +3,7 @@
 }
 
 .signin-container {
-    height: 80vh;
+    height: 70vh;
     width: 40vw;
     position: absolute;
     top: 50%;
@@ -46,4 +46,19 @@ h1 {
 .order-info {
     font-size: 1.8rem;
     font-family: 'Quicksand', sans-serif;
+}
+
+.hello-header {
+    font-size: 5rem;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.homepage-navigation {
+    text-decoration: underline;
+    color: #515151;
+    font-size: 1.3rem;
+}
+
+.homepage-navigation:hover {
+    color: #81a7f3;
 }

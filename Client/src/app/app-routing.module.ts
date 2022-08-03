@@ -19,7 +19,7 @@ const routes: Routes = [
   { path: 'admin/update-product', component: UpdateProductComponent },
   { path: 'admin/new-product', component: NewProductComponent },
   { path: 'orders-history', component: OrdersHistoryComponent },
-  { path: 'order-payment', component: CreateOrderComponent },
+  { path: 'checkout', component: CreateOrderComponent },
   { path: '**', redirectTo: '' }
 ];
 

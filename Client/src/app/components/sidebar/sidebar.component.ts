@@ -8,6 +8,7 @@ import { selectUserState } from 'src/app/selectors/user.selector';
 import { selectCartState } from 'src/app/selectors/cart.selector';
 import { setCart } from 'src/app/actions/cart.actions';
 import { UserService } from 'src/app/services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -21,7 +22,7 @@ export class SidebarComponent implements OnInit {
 
   user: any;
   cart: any;
-  constructor(private cartService: CartService, private store: Store, private userService: UserService) {
+  constructor(private cartService: CartService, private store: Store, private userService: UserService, private router: Router) {
     this.cart$ = this.store.select(selectCartState);
     this.cart$.subscribe(cart => {
       this.cart = cart;
@@ -34,6 +35,7 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.cart);
   }
 
   ngOnChanges() {
@@ -50,4 +52,18 @@ export class SidebarComponent implements OnInit {
       console.log(err);
     }
   }
+
+  placeOrder() {
+    if (this.cart.totalPrice === 0) {
+      alert('Your cart is empty');
+    } else {
+      this.router.navigate(['/checkout']);
+    }
+  }
 }
+
+
+
+
+
+

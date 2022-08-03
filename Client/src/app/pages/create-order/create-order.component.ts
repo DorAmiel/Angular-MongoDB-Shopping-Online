@@ -37,6 +37,8 @@ export class CreateOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.setCurrentDate();
+    console.log(this.user);
+    
   }
 
 
