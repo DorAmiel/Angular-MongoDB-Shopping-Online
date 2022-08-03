@@ -11,8 +11,7 @@
     <h3 class="headline">New Product</h3>
     <hr>
     <form #productForm="ngForm" action="/profile" class="input-container" enctype="multipart/form-data" method="post">
-        <input class="is-info signup-inupt is-large input" type="text" placeholder="product name" name="productName"
-            ngModel><br>
+        <input class="is-info signup-inupt is-large input" type="text" placeholder="product name" name="productName" ngModel><br>
         <input class="is-info signup-inupt is-large input" type="number" placeholder="price" name="price" ngModel><br>
         <select class="is-info signup-inupt is-large select" name="categoryId" ngModel>
             <option value="">select category</option>
@@ -20,8 +19,8 @@
                 value={{category._id}}>{{category.categoryName}}
             </option>
         </select><br>
-        <input class="is-info signup-inupt is-large input" type="file" (change)="sendFile($event)" name="image" ngModel><br>
-        <button class="button is-link is-light is-large signup-inupt signup-button" type="submit"
-            (click)="createNewProduct(productForm)">Create New Product</button>
+
+        <input class="is-info signup-inupt is-large input " type="file" (change)="sendFile($event)" name="image" ngModel><br>
+        <button class="button is-link is-light is-large signup-inupt signup-button" type="submit" (click)="createNewProduct(productForm)">Create New Product</button>
     </form>
 </div>

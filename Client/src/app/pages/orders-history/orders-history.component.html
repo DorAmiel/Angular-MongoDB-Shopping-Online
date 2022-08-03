@@ -26,7 +26,7 @@
         </thead>
         <tbody *ngFor=" let order of orders">
             <tr>
-                <td>{{order.totalPrice}}</td>
+                <td>{{order.totalPrice}} $</td>
                 <td>{{order.city}}</td>
                 <td>{{order.street}}</td>
                 <td>{{order.orderCreated.substring(2,10)}}</td>
