@@ -6,14 +6,14 @@
     <hr>
     <form #signInForm="ngForm" class="input-container">
         <select class="is-info signin-inupt is-large select" name="city" ngModel>
+            <option value="">Select City</option>
             <option class="is-info signin-inupt is-large select" *ngFor="let city of cities" value={{city}}>{{city}}
             </option>
         </select><br>
         <input class="is-info signin-inupt is-large input" type="text" placeholder="Street" name="street" ngModel><br>
         <input class="is-info signin-inupt is-large input" min={{currentDate}} type="date" placeholder="Shipping Date" name="shippingDate" ngModel><br>
         <input class="is-info signin-inupt is-large input" type="text" maxlength="4" placeholder="Credit Card" name="creditCard" ngModel><br>
-        <span class="order-info">Total Price: 100$</span><br>
-        <span class="order-info">Products: 51</span><br><br>
+        <span class="order-info">Total Price: {{cart?.totalPrice}}$</span><br><br>
         <button class="button is-link is-light is-large signin-inupt signin-button" type="submit">Place Order</button>
     </form>
 </div>
