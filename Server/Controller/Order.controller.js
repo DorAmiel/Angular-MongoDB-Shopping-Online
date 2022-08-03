@@ -14,7 +14,7 @@ exports.create = async(req, res) => {
             city: req.body.city,
             street: req.body.street,
             shippingDate: req.body.shippingDate,
-            orderCreated: req.body.orderCreated,
+            orderCreated: new Date(),
             creditCard: req.body.creditCard
         });
         //save order in the database
@@ -31,9 +31,6 @@ exports.create = async(req, res) => {
             message: error.message || "Some error occurred while creating the order."
         });
     }
-
-
-
 };
 
 exports.findAll = (req, res) => {
