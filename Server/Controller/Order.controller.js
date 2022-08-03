@@ -64,6 +64,18 @@ exports.findOne = (req, res) => {
         });
 };
 
+//find order by userId
+exports.findAllByUserId = (req, res) => {
+    Order.find({ userId: req.params.userId }).populate('userId').populate('cartId').then(orders => {
+        res.send(orders);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving orders."
+        });
+    });
+}
+
+
 exports.update = (req, res) => {
 
 

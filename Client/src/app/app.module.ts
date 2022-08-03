@@ -20,6 +20,7 @@ import { userReducer } from './reducers/user.reducer';
 import { cartReducer } from './reducers/cart.reducer';
 import { productsReducer } from './reducers/products.reducer';
 import { categoryReducer } from './reducers/category.reducer';
+import { orderReducer } from './reducers/order.reducer';
 import { FooterComponent } from './components/footer/footer.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
@@ -58,7 +59,8 @@ import { CreateOrderComponent } from './pages/create-order/create-order.componen
       user: userReducer,
       cart: cartReducer,
       products: productsReducer,
-      category: categoryReducer
+      category: categoryReducer,
+      order: orderReducer
     }),
   ],
   providers: [],

@@ -40,3 +40,10 @@
     .head-row {
         text-align: center !important
     }
+    
+    .no-orders {
+        font-size: 8rem;
+        font-family: 'Quicksand', sans-serif;
+        font-style: oblique;
+        color: #c892f5;
+    }

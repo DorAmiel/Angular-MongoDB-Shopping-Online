@@ -9,7 +9,7 @@ import { selectCartState } from 'src/app/selectors/cart.selector';
 import { setCart } from 'src/app/actions/cart.actions';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
-
+ 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',

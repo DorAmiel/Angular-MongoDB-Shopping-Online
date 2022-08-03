@@ -5,6 +5,7 @@ import { selectCartState } from 'src/app/selectors/cart.selector';
 import { selectUserState } from 'src/app/selectors/user.selector';
 import { CartService } from 'src/app/services/cart.service';
 import { OrdersService } from 'src/app/services/orders.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-order',
@@ -27,7 +28,7 @@ export class CreateOrderComponent implements OnInit {
 
   cart: any;
 
-  constructor(private store: Store, private cartService: CartService, private orderService: OrdersService) {
+  constructor(private store: Store, private cartService: CartService, private orderService: OrdersService, private router: Router) {
     this.user$ = this.store.select(selectUserState)
     this.user$.subscribe(user => {
       this.user = user;
@@ -87,9 +88,11 @@ export class CreateOrderComponent implements OnInit {
       const order = this.orderService.addOrder(currentOrder).toPromise();
       if (order) {
         console.log(order);
+        this.router.navigate(['/']);
       }
     } catch (err) {
       console.log(err);
     }
   }
+
 }
