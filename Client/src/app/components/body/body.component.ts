@@ -33,34 +33,34 @@ export class BodyComponent {
     });
   }
 
-  ngOnChanges() {
-    this.currentCategoryId = this.currentCategory._id;
-    if (this.currentCategoryId === '' || this.currentCategoryId === undefined) {
-      this.getProducts();
-    }
-    else {
-      this.getProductsByCategory(this.currentCategoryId);
-    }
-  }
+  // ngOnChanges() {
+  //   this.currentCategoryId = this.currentCategory._id;
+  //   if (this.currentCategoryId === '' || this.currentCategoryId === undefined) {
+  //     this.getProducts();
+  //   }
+  //   else {
+  //     this.getProductsByCategory(this.currentCategoryId);
+  //   }
+  // }
 
-  //get all products
-  getProducts() {
-    this.productService.getProducts().subscribe(
-      (data: Product[]) => {
-        this.products = data;
-        this.store.dispatch(setProducts({ Products: this.products }));
-      }
-    )
-  }
+  // //get all products
+  // getProducts() {
+  //   this.productService.getProducts().subscribe(
+  //     (data: Product[]) => {
+  //       this.products = data;
+  //       this.store.dispatch(setProducts({ Products: this.products }));
+  //     }
+  //   )
+  // }
 
-  //get products by category
-  getProductsByCategory(category: string) {
-    this.productService.getProductsByCategory(category).subscribe(
-      (data: Product[]) => {
-        this.products = data;
-      }
-    )
-  }
+  // //get products by category
+  // getProductsByCategory(category: string) {
+  //   this.productService.getProductsByCategory(category).subscribe(
+  //     (data: Product[]) => {
+  //       this.products = data;
+  //     }
+  //   )
+  // }
 
 
 }

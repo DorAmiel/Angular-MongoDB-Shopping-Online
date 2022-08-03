@@ -1,12 +1,13 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CategoryService } from '../../../services/categories.service';
 import { Category } from '../../../models/category';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { getCart } from 'src/app/actions/cart.actions';
 import { selectCartState } from 'src/app/selectors/cart.selector';
 import { Cart } from 'src/app/models/cart';
+import { selectCategoryState } from 'src/app/selectors/category.selector';
+import { setCategory } from 'src/app/actions/category.actions';
 
 @Component({
   selector: 'app-navbar-down',
@@ -17,7 +18,6 @@ export class NavbarDownComponent implements OnInit {
 
   categories: Category[] = [];
   currentCategory: Category = new Category();
-  @Output() categoryEmmiter = new EventEmitter();
 
   cart$: Observable<any>;
   currentCart: any = new Cart();
@@ -46,7 +46,7 @@ export class NavbarDownComponent implements OnInit {
   //get current category
   getCurrentCategory(category: Category) {
     this.currentCategory = category;
-    this.categoryEmmiter.emit(this.currentCategory);
+    this.store.dispatch(setCategory({ category: this.currentCategory }));
   }
 }
 
