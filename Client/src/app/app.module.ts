@@ -25,6 +25,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProductComponent } from './pages/admin/update-product/update-product.component';
 import { NewProductComponent } from './pages/admin/new-product/new-product.component';
 import { OrdersHistoryComponent } from './pages/orders-history/orders-history.component';
+import { CreateOrderComponent } from './pages/create-order/create-order.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { OrdersHistoryComponent } from './pages/orders-history/orders-history.co
     UpdateProductComponent,
     NewProductComponent,
     OrdersHistoryComponent,
+    CreateOrderComponent,
   ],
   imports: [
     BrowserModule,

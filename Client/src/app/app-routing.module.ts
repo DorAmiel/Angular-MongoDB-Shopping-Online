@@ -8,6 +8,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { UpdateProductComponent } from './pages/admin//update-product/update-product.component';
 import { NewProductComponent } from './pages/admin//new-product/new-product.component';
 import { OrdersHistoryComponent } from './pages/orders-history/orders-history.component';
+import { CreateOrderComponent } from './pages/create-order/create-order.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'admin/update-product', component: UpdateProductComponent },
   { path: 'admin/new-product', component: NewProductComponent },
   { path: 'orders-history', component: OrdersHistoryComponent },
+  { path: 'order-payment', component: CreateOrderComponent },
   { path: '**', redirectTo: '' }
 ];
 
