@@ -1,7 +1,8 @@
 const Joi = require('joi');
 
 const schema = Joi.object({
-    categoryName: Joi.string().required()
+    categoryName: Joi.string().required(),
+    categoryImage: Joi.string().required()
 });
 
 

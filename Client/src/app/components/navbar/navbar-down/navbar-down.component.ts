@@ -39,6 +39,7 @@ export class NavbarDownComponent implements OnInit {
     this.categoryService.getCategories().subscribe(
       data => {
         this.categories = data;
+        console.log(this.categories);
       }
     );
   }
