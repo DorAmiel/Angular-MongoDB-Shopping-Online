@@ -5,7 +5,7 @@ The app let a client to create a user and make an order with the site products. 
 The project supports __private routing__ and __manage state__ with ***NgRx***.
 
 
-<img src="https://github.com/eilonALT/VacationsApp/blob/master/readme.JPG">
+<img src="https://github.com/DorAmiel/Angular-MongoDB-Shopping-Online/blob/master/readme.png">
 
 ### FRONT-END
 - Angular
