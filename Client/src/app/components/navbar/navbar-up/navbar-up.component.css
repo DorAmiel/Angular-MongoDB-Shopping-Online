@@ -121,3 +121,8 @@
 .loggedUserButtons:hover {
     color: #a660e0;
 }
+
+.orders-navigation-button {
+    color: #515151;
+    text-decoration: underline
+}

@@ -1,15 +1,16 @@
+const upload = require('../middlewares/uploads');
+
 module.exports = (app) => {
     const products = require('../Controller/product.controller');
 
     // Create a new product
-    app.post('/products', products.create);
+    app.post('/products', upload.single('image'), products.create);
 
     // Retrieve all products
     app.get('/products', (req, res) => {
         if (req.query.categoryName) {
             products.findByCategory(req, res);
-        }
-        else {
+        } else {
             products.findAll(req, res);
         }
     })

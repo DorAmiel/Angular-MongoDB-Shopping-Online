@@ -25,7 +25,6 @@ export class UpdateProductComponent implements OnInit {
     this.product$ = this.store.select(selectProductState);
     this.product$.subscribe(
       (data: any) => {
-        console.log(data);
         if (data.length <= 0) {
           this.router.navigate(['/admin/']);
         }
@@ -42,8 +41,6 @@ export class UpdateProductComponent implements OnInit {
     form.value.categoryName === "" ? form.value.categoryName = this.product.categoryId._id : null;
     form.value.productName === "" ? form.value.productName = this.product.productName : null;
     form.value.price === "" ? form.value.price = this.product.price : null;
-    // form.value.categoryName === "" ? form.value.categoryName = this.product.categoryId._id : null;
-    console.log(form.value);
     let newProduct = { ...form.value, _id: this.product._id };
     this.productService.updateProduct(newProduct).subscribe(
       (data: any) => {

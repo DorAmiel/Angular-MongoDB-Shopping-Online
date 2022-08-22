@@ -14,7 +14,7 @@ exports.create = async(req, res) => {
             city: req.body.city,
             street: req.body.street,
             shippingDate: req.body.shippingDate,
-            orderCreated: req.body.orderCreated,
+            orderCreated: new Date(),
             creditCard: req.body.creditCard
         });
         //save order in the database
@@ -31,9 +31,6 @@ exports.create = async(req, res) => {
             message: error.message || "Some error occurred while creating the order."
         });
     }
-
-
-
 };
 
 exports.findAll = (req, res) => {
@@ -66,6 +63,18 @@ exports.findOne = (req, res) => {
             });
         });
 };
+
+//find order by userId
+exports.findAllByUserId = (req, res) => {
+    Order.find({ userId: req.params.userId }).populate('userId').populate('cartId').then(orders => {
+        res.send(orders);
+    }).catch(err => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while retrieving orders."
+        });
+    });
+}
+
 
 exports.update = (req, res) => {
 

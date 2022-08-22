@@ -8,8 +8,8 @@ const schema = Joi.object({
     totalPrice: Joi.number().required(),
     city: Joi.string().required(),
     street: Joi.string().required(),
-    shippingDate: Joi.date().required().greater(Joi.ref('orderCreated')),
-    orderCreated: Joi.date().required(),
+    shippingDate: Joi.date().required(),
+    orderCreated: Joi.date(),
     creditCard: Joi.number().required()
 });
 

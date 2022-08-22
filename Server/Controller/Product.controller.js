@@ -4,6 +4,7 @@ const Categories = require('../Model/Category.model');
 
 
 exports.create = async (req, res) => {
+    const { path: image } = req.file;
     try {
         // Validate Request 
         await validateBody(req.body);
@@ -12,7 +13,7 @@ exports.create = async (req, res) => {
             productName: req.body.productName,
             categoryId: req.body.categoryId,
             price: req.body.price,
-            image: req.body.image
+            image: "../../../assets/images/" + image.split('\\')[5]
         });
         //save product in the database
         product.save()
@@ -36,15 +37,12 @@ exports.create = async (req, res) => {
             message: error.message || "Some error occurred while creating the product."
         });
     }
-
-
 };
 
 exports.findAll = (req, res) => {
     Product.find().populate('categoryId', 'categoryName').then(products => {
         res.send(products);
-    }
-    ).catch(err => {
+    }).catch(err => {
         res.status(500).send({
             message: err.message || "Some error occurred while retrieving products."
         });

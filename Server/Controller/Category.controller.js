@@ -9,6 +9,7 @@ exports.create = async(req, res) => {
         //create a category
         const category = new Category({
             categoryName: req.body.categoryName,
+            categoryImage: req.body.categoryImage
         });
         //save category in the database
         category.save()

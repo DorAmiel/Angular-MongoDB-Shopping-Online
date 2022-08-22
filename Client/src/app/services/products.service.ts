@@ -28,8 +28,8 @@ export class ProductsService {
   }
 
   /** create a  Product  */
-  addProduct(product: Product): Observable<any> {
-    return this.http.post<any>(`${this.URL}`, { "productName": product.productName, "categoryId": product.categoryName, "price": product.price, "image": product.image })
+  addProduct(product: any): Observable<any> {
+    return this.http.post<any>(`${this.URL}`, product)
   }
 
   /** GET products by category  */

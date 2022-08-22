@@ -22,9 +22,9 @@
                 <td>{{product.productName}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product?.categoryId?.categoryName}}</td>
-                <td>Product.image</td>
+                <td>{{product.image}}</td>
                 <td class="modify-row"><img class="modify-button"  (click)="updateProductPage(product)" src="../../../assets/Icons/edit.png"></td>
-                <td class="modify-row"><img class="modify-button" src="../../../assets/Icons/remove.png"></td>
+                <td class="modify-row"><img class="modify-button" (click)="removeProduct(product._id)" src="../../../assets/Icons/remove.png"></td>
             </tr>
         </tbody>
     </table>

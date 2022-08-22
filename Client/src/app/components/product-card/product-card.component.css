@@ -2,6 +2,10 @@
     width: 15vw;
     height: 32vh;
     font-family: 'Roboto Mono', monospace;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .card-image {
